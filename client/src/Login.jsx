@@ -1,16 +1,26 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import {Formik, Form, Field, ErrorMessage,} from 'formik';
+import { useApplicationState } from '../config/state';
+import { userLogin } from '../services/services';
 const initialValues = {
   email: '',
   password : '',
 }
 const Login = () => {
-  const {userData, setUserData} = useState({})
+  const [userData, setUserData] = useState()
+  // const {setUser} = useApplicationState();
 
-  const handleSubmit = (e) => {
-    e.preventDefault;
+  const handleLogin = async (user) => {
+    try {
+      const response = await userLogin(user);
+      console.log(response);
+      
+    } catch (error) {
+      console.error(error);
+    }
   }
+
   return (
     <div>
      <Formik
@@ -18,7 +28,7 @@ const Login = () => {
       validate = {values => {}}
       onSubmit = {(valores) => {
         setUserData(valores);
-        console.log(userData);
+        handleLogin(userData);
       }}>
         {() => (
           <Form>
