@@ -9,14 +9,14 @@ const initialValues = {
   password : '',
 }
 const Login = () => {
-  const [userData, setUserData] = useState()
   const navigate = useNavigate();
   // const {setUser} = useApplicationState();
 
   const handleLogin = async (user) => {
+    console.log(user);
     try {
       const response = await userLogin(user);
-      console.log(response);
+      console.log('logeado', response);
       
     } catch (error) {
       console.error(error);
@@ -29,8 +29,7 @@ const Login = () => {
       initialValues={initialValues}
       validate = {values => {}}
       onSubmit = {(valores) => {
-        setUserData(valores);
-        handleLogin(userData);
+        handleLogin(valores);
       }}>
         {() => (
           <Form>

@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React from 'react'
 import { userSignUp } from '../services/services';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   firstname: '',
@@ -9,18 +10,22 @@ const initialValues = {
   password: '',
   rePassword: '',
 }
-const onSignUp = async (userData) => {
-  console.log(userData);
-  try {
-    const response = await userSignUp(userData);
-    console.log('bien', response)
-  } catch (e) {
-    console.error(e);
-  }
-};
-
 
 const Signup = () => {
+  const navigate = useNavigate();
+
+  const onSignUp = async (userData) => {
+
+    console.log(userData);
+    try {
+      const response = await userSignUp(userData);
+      console.log('bien', response)
+      navigate('/successfull')
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  
   return (
     <Formik
     initialValues={initialValues}
