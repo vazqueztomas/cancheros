@@ -1,9 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React from 'react'
 const initialValues = {
-
+  firstname: '',
+  lastname: '',
+  email: '',
+  password: '',
+  rePassword: '',
 }
 const Signup = () => {
+
   return (
     <Formik
     initialValues={initialValues}
@@ -13,11 +18,7 @@ const Signup = () => {
   }}
 
   onSubmit={(values) => {
-    const userData = {
-      email: values.email,
-      password: values.password,
-      name: values.firstname + " " + values.lastname,
-    }
+    console.log(values);
   }}>
     {() => (
     <Form autoComplete="off" style = {{display: 'flex', flexDirection: 'column'}}>
@@ -60,7 +61,6 @@ const Signup = () => {
       <div >
 
     <Field
-      id = 'rePassword'
       name="rePassword"
       placeholder="Repetir contraseña"
       aria-describedby="explicacionrepassword"
