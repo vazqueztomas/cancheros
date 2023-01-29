@@ -17,7 +17,7 @@ export function setupServices() {
 
 export const userLogin = async (userInfo) => {
 	const response = await axios.post('/auth/login', userInfo, OPTIONS);
-	return response.data;
+	return response;
 };
 
 export const userSignUp = async (userData) => {
