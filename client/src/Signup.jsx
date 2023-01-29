@@ -1,9 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React from 'react'
 import { userSignUp } from '../services/services';
-import { useNavigate } from 'react-router-dom';
 
-const navigate = useNavigate();
 const initialValues = {
   firstname: '',
   lastname: '',
@@ -12,10 +10,10 @@ const initialValues = {
   rePassword: '',
 }
 const onSignUp = async (userData) => {
-  setLoading(true);
+  console.log(userData);
   try {
     const response = await userSignUp(userData);
-    navigate('/successfull')
+    console.log('bien', response)
   } catch (e) {
     console.error(e);
   }
@@ -32,7 +30,12 @@ const Signup = () => {
   }}
 
   onSubmit={(values) => {
-    console.log(values);
+    let data = {
+      name : values.firstname + values.lastname,
+      email: values.email,
+      password: values.password
+    }
+    onSignUp(data);
   }}>
     {() => (
     <Form autoComplete="off" style = {{display: 'flex', flexDirection: 'column'}}>
