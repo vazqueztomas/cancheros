@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import {Formik, Form, Field, ErrorMessage,} from 'formik';
 import { useApplicationState } from '../config/state';
 import { userLogin } from '../services/services';
+import { useNavigate } from 'react-router-dom';
 const initialValues = {
   email: '',
   password : '',
 }
 const Login = () => {
   const [userData, setUserData] = useState()
+  const navigate = useNavigate();
   // const {setUser} = useApplicationState();
 
   const handleLogin = async (user) => {
@@ -50,6 +52,7 @@ const Login = () => {
           </Form>
         )}
      </Formik>
+        <button onClick = {() => navigate('/signup')}>Aun no tienes cuenta?</button>
     </div>
   )
 }
