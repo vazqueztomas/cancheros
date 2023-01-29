@@ -7,8 +7,8 @@ const initialValues = {
   password: '',
   rePassword: '',
 }
-const Signup = () => {
 
+const Signup = () => {
   return (
     <Formik
     initialValues={initialValues}

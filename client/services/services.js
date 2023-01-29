@@ -20,3 +20,8 @@ export const userLogin = async (userInfo) => {
 	const response = await axios.post('/auth/login', userInfo, OPTIONS);
 	return response.data;
 };
+
+export const userSignUp = async (userData) => {
+	const response = await axios.post('/auth/signup', userData, OPTIONS);
+	return response.data;
+}
