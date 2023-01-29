@@ -6,6 +6,7 @@ import App from './App'
 import './index.css'
 import Login from './Login'
 import Signup from './Signup'
+import Successfull from './Successfull'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup/>
+  },
+  {
+    path: '/successfull',
+    element: <Successfull/>
   }
 ])
 
