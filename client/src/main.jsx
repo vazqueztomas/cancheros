@@ -5,6 +5,7 @@ import { setupServices } from '../services/services'
 import App from './App'
 import './index.css'
 import Login from './Login'
+import SelectTeam from './SelectTeam'
 import Signup from './Signup'
 import Successfull from './Successfull'
 
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
   {
     path: '/successfull',
     element: <Successfull/>
-  }
+  },
+  {path: '/select-team', element: <SelectTeam/>}
 ])
 
 setupServices();

@@ -17,7 +17,7 @@ const Login = () => {
     try {
       const response = await userLogin(user);
       console.log('logeado', response);
-      
+      navigate('/select-team');
     } catch (error) {
       console.error(error);
     }
