@@ -1,4 +1,3 @@
-import colon from './team_src/colon.png';
 
 export const teams = [
     {
@@ -43,7 +42,7 @@ export const teams = [
     },
     {
       "strTeam": "Colon Santa Fe, Club Atlético Colón, CA Colón",
-      "strTeamBadge": {colon},
+      "strTeamBadge": "https://www.thesportsdb.com/images/media/team/badge/r20t6u1604355082.png",
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/lcoqis1668649884.png",
       "strYoutube": "www.youtube.com/user/ClubColonOficial",
       "strLocked": "unlocked"
