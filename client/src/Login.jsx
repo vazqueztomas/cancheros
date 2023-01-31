@@ -4,6 +4,7 @@ import {Formik, Form, Field, ErrorMessage,} from 'formik';
 import { useApplicationState } from '../config/state';
 import { userLogin } from '../services/services';
 import { useNavigate } from 'react-router-dom';
+
 const initialValues = {
   email: '',
   password : '',
@@ -11,13 +12,13 @@ const initialValues = {
 const Login = () => {
   const navigate = useNavigate();
   const [error,setError] = useState()
-  // const {setUser} = useApplicationState();
+  const {setUser} = useApplicationState();
 
   const handleLogin = async (user) => {
     console.log(user);
     try {
       const response = await userLogin(user);
-      console.log('logeado', response);
+      setUser(response.data.userInfo)
       navigate('/select-team');
     } catch (error) {
       if (error.response.status == 401){

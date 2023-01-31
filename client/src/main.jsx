@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { StateProvider } from '../config/state'
 import { setupServices } from '../services/services'
 import App from './App'
 import './index.css'
@@ -21,6 +22,8 @@ setupServices();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router = {router}/>
+    <StateProvider>
+      <RouterProvider router = {router}/>
+    </StateProvider>
   </React.StrictMode>,
 )
