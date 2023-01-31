@@ -11,7 +11,7 @@ const SelectTeam = () => {
     <TeamsContainer>
       {teams.map((el, index) => <Team key = {index} name = {el.strTeam} src = {el.strTeamBadge} setTeamSelected = {setTeamSelected}/>)}
     </TeamsContainer>
-    {teamSelected !== '' ? <Cartel>Elegiste {teamSelected}</Cartel> : null}
+    {teamSelected !== '' ? <Cartel><p>Elegiste <b>{teamSelected}</b>.</p> <button>Continuar</button></Cartel> : null}
   </Container>
   )
 }
@@ -32,7 +32,7 @@ const TeamsContainer = styled.div`
 const Cartel = styled.div`
   display: flex;
   bottom: 0;
-  background: red;
+  justify-content: space-between;
 `
 
 export default SelectTeam
