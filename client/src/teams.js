@@ -36,12 +36,12 @@ export const teams = [
       "strTeamLogo": "https://www.thesportsdb.com/images/media/team/logo/rrsstx1421591573.png"
     },
     {
-      "strTeam": "Central Córdoba de Santiago del Estero",
+      "strTeam": "Central Córdoba",
       "strTeamBadge": "https://www.thesportsdb.com/images/media/team/badge/d62xkc1576101576.png",
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/7jghcc1624217022.png"
     },
     {
-      "strTeam": "Colon Santa Fe, Club Atlético Colón, CA Colón",
+      "strTeam": "Colon de Santa Fe",
       "strTeamBadge": "https://www.thesportsdb.com/images/media/team/badge/r20t6u1604355082.png",
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/lcoqis1668649884.png",
       "strYoutube": "www.youtube.com/user/ClubColonOficial",

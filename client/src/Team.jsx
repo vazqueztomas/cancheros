@@ -3,14 +3,12 @@ import styled from 'styled-components';
 
 const Team = ({name, src}) => {
   const [teamSelected, setTeamSelected] = useState('');
-  const handleTeam = () => {
-    console.log(name)
-    setTeamSelected(name);
-    console.log(teamSelected)
+  const handleTeam = (name) => {
+    setTeamSelected(name)
   }
   return (
-    <Container onClick = {handleTeam}>
-      <h3>{name}</h3>
+    <Container onClick = {() => handleTeam(name)}>
+      <h5>{name}</h5>
       <TeamBadge src = {src}/>
     </Container>
   )
@@ -20,10 +18,19 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid lightgray;
+  width: 150px;
+  height: 150px;
+  margin: 8px;
+  border-radius: 8px;
+
+  & > h5{
+    margin: 0 8px;
+  }
 `
 const TeamBadge = styled.img`
   display: flex;
-  max-width: 150px;
+  max-width: 60px;
 `
 
 export default Team
