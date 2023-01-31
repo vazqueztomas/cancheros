@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 
-const Team = ({name, src}) => {
-  const [teamSelected, setTeamSelected] = useState('');
+const Team = ({name, src, setTeamSelected}) => {
   const handleTeam = (name) => {
     setTeamSelected(name)
   }
@@ -19,8 +18,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   border: 1px solid lightgray;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   margin: 8px;
   border-radius: 8px;
 
@@ -30,7 +29,7 @@ const Container = styled.div`
 `
 const TeamBadge = styled.img`
   display: flex;
-  max-width: 60px;
+  max-width: 48px;
 `
 
 export default Team
