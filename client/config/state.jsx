@@ -4,7 +4,7 @@ const ApplicationContext = createContext();
 
 export const StateProvider = ({ children }) => {
 	const [user, setUser] = useState();
-
+  console.log(user);
 	return (
 		<ApplicationContext.Provider value={{ user, setUser }}>
 			{children}

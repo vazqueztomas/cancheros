@@ -1,17 +1,24 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import { useApplicationState } from '../config/state'
 import Team from './Team'
 import { teams } from './teams'
 
 const SelectTeam = () => {
-  const [teamSelected, setTeamSelected] = useState('')
+  const {user, setUser} = useApplicationState();
+  const [teamSelected, setTeamSelected] = useState('');
+
+  const handleSelected = (team) => {
+    setUser(team);
+    console.log(user);
+  }
   return (
     <Container>
     <h2>Elegí tu equipo</h2>
     <TeamsContainer>
       {teams.map((el, index) => <Team key = {index} name = {el.strTeam} src = {el.strTeamBadge} setTeamSelected = {setTeamSelected}/>)}
     </TeamsContainer>
-    {teamSelected !== '' ? <Cartel><p>Elegiste <b>{teamSelected}</b>.</p> <button>Continuar</button></Cartel> : null}
+    {teamSelected !== '' ? <Cartel><p>Elegiste <b>{teamSelected}</b>.</p> <button onClick = {() => handleSelected({...user,team :teamSelected})}>Continuar</button></Cartel> : null}
   </Container>
   )
 }
