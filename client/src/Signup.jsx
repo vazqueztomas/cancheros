@@ -15,11 +15,8 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const onSignUp = async (userData) => {
-
-    console.log(userData);
     try {
       const response = await userSignUp(userData);
-      console.log('bien', response)
       navigate('/successfull')
     } catch (e) {
       console.error(e);

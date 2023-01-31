@@ -10,6 +10,7 @@ const initialValues = {
 }
 const Login = () => {
   const navigate = useNavigate();
+  const [error,setError] = useState()
   // const {setUser} = useApplicationState();
 
   const handleLogin = async (user) => {
@@ -19,7 +20,9 @@ const Login = () => {
       console.log('logeado', response);
       navigate('/select-team');
     } catch (error) {
-      console.error(error);
+      if (error.response.status == 401){
+        setError(401)
+      } 
     }
   }
 
@@ -45,12 +48,13 @@ const Login = () => {
            <Field type="password" name="password" />
            <ErrorMessage name="password" component="div" />
            <button type="submit">
-             Submit
+             Ingresar
            </button>
           </Label>
           </Form>
         )}
      </Formik>
+        {error == 401 ? <h4 style = {{color: 'red'}}>Email o contraseña inválidos.</h4> : null}
         <button onClick = {() => navigate('/signup')}>Aun no tienes cuenta?</button>
     </div>
   )
