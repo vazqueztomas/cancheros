@@ -15,6 +15,7 @@ server.get('/', (req, res, next) => {
 })
 
 server.use("/auth", require("./routes/auth"));
+server.use("/teams", require("./routes/teams"))
 
 console.log(process.env.DB_DEVELOPMENT);
 connectDB()
