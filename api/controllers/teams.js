@@ -6,7 +6,7 @@ const handleNewClub = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(403).json('Acceso denegado.');
 
-    const newClub = await User.updateOne(user, {$push: {club: clubName}})
+    const newClub = await User.updateOne(user,{club : clubName})
     res.status(200).json(newClub);
   } catch (error) {
     console.error(error);

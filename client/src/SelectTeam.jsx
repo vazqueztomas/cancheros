@@ -1,16 +1,24 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import { useApplicationState } from '../config/state'
+import { handleNewClub } from '../services/services'
 import Team from './Team'
 import { teams } from './teams'
 
 const SelectTeam = () => {
-  const {user, setUser} = useApplicationState();
+  const {user,setUser} = useApplicationState();
   const [teamSelected, setTeamSelected] = useState('');
-
-  const handleSelected = (team) => {
-    setUser(team);
-    console.log(user);
+  console.log(user.email)
+  const handleSelected = async (team) => {
+    const data = {
+      email : user.email,
+      clubName: team,
+    }
+    try {
+      const response = await handleNewClub(data);
+    } catch (error) {
+      console.error(error);
+    }
   }
   return (
     <Container>
@@ -18,7 +26,7 @@ const SelectTeam = () => {
     <TeamsContainer>
       {teams.map((el, index) => <Team key = {index} name = {el.strTeam} src = {el.strTeamBadge} setTeamSelected = {setTeamSelected}/>)}
     </TeamsContainer>
-    {teamSelected !== '' ? <Cartel><p>Elegiste <b>{teamSelected}</b>.</p> <button onClick = {() => handleSelected({...user,team :teamSelected})}>Continuar</button></Cartel> : null}
+    {teamSelected !== '' ? <Cartel><p>Elegiste <b>{teamSelected}</b>.</p> <button onClick = {() => handleSelected(teamSelected)}>Continuar</button></Cartel> : null}
   </Container>
   )
 }
