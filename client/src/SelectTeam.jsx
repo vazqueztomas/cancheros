@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import { useApplicationState } from '../config/state'
-import { handleNewClub } from '../services/services'
+import { getUser, handleNewClub } from '../services/services'
 import Team from './Team'
 import { teams } from './teams'
 
@@ -16,6 +16,9 @@ const SelectTeam = () => {
     }
     try {
       const response = await handleNewClub(data);
+      console.log(response);
+      const newUserData = await getUser(user.email);
+      console.log(newUserData);
     } catch (error) {
       console.error(error);
     }
