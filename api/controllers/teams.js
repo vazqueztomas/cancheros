@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-const handleTeam = async (req, res) => {
+const handleNewClub = async (req, res) => {
   try {
     const {email, clubName} = req.body;
     const user = await User.findOne({ email });
@@ -14,4 +14,4 @@ const handleTeam = async (req, res) => {
   }
 }
 
-module.exports = handleTeam;
+module.exports ={ handleNewClub};
