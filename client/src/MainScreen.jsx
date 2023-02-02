@@ -1,13 +1,16 @@
 import React, {useState} from 'react'
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik';
+import {teams} from './teams'
 
 const inputDate = (props) => (
   <input type = 'date' {...props}/>
 )
 
 const MainScreen = () => {
+  const teamsNames = teams.map((el, ind) => {
+    return el.strTeam;
+  })
   const [visibleForm, setVisibleForm] = useState(false);
   const initialValues = {
     playVersus: '',
@@ -26,9 +29,7 @@ const MainScreen = () => {
           <Form style={{display: 'flex', flexDirection: 'column'}}>
           <label>Contra quién jugó tu equipo?</label>
           <Field as = 'select' name = 'playVersus'>
-            <option>Barracas</option>
-            <option>Atletico</option>
-            <option>River</option>
+            {teamsNames.map((el, ind) => <option key = {ind}>{el}</option>)}
           </Field>
 
           <label htmlFor='matchDay'>En que fecha?</label>
