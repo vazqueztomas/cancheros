@@ -38,7 +38,10 @@ const MainScreen = () => {
       {visibleForm ? 
       <Formik
         initialValues={initialValues}
-        onSubmit = {(values) => {console.log(values)}}
+        onSubmit = {(values) => {
+          console.log(values)
+          setMatch(values)
+        }}
       >
         {() => (
           <Form style={{display: 'flex', flexDirection: 'column'}}>
