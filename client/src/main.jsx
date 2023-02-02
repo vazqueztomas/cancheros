@@ -12,19 +12,6 @@ import SelectTeam from './SelectTeam'
 import Signup from './Signup'
 import Successfull from './Successfull'
 
-// const router = createBrowserRouter([
-//   {path: '/', element: <App/>},
-//   {element: <RequireAuth/>,
-//     children: {
-
-//     }},
-//   {path: '/login', element: <Login/>},
-//   {path: '/signup', element: <Signup/>},
-//   {path: '/successfull', element: <Successfull/>},
-//   {path: '/select-team', element: <SelectTeam/>},
-//   {path: '/mainscreen', element: <MainScreen/>}
-// ])
-
 const router = createBrowserRouter(createRoutesFromElements(
   <>
   <Route path = '/' element = {<App/>}/>
