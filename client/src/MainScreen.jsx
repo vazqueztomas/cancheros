@@ -2,19 +2,34 @@ import React, {useState} from 'react'
 import styled from 'styled-components';
 import { Field, Form, Formik } from 'formik';
 import {teams} from './teams'
+import { useApplicationState } from '../config/state';
+import { setNewMatch } from '../services/services';
 
 const inputDate = (props) => (
   <input type = 'date' {...props}/>
 )
 
 const MainScreen = () => {
+  const {user} = useApplicationState();
+
+  const [visibleForm, setVisibleForm] = useState(false);
+  const initialValues = {
+    email: user.email,
+    playVersus: '',
+    matchDay: '',
+  }
+
   const teamsNames = teams.map((el, ind) => {
     return el.strTeam;
   })
-  const [visibleForm, setVisibleForm] = useState(false);
-  const initialValues = {
-    playVersus: '',
-    matchDay: '',
+
+  const setMatch = async (matchData) => {
+    try {
+      const response = await setNewMatch(matchData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <Container>
@@ -34,7 +49,6 @@ const MainScreen = () => {
 
           <label htmlFor='matchDay'>En que fecha?</label>
           <Field as = {inputDate} name = 'matchDay'/>
-          {/* <input type = 'date' name = 'matchDay'/> */}
 
           <button type = 'submit'>Cargar partido</button>
         </Form>
