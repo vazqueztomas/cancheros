@@ -4,11 +4,13 @@ import { useApplicationState } from '../config/state'
 import { getUser, handleNewClub } from '../services/services'
 import Team from './Team'
 import { teams } from './teams'
+import { useNavigate } from 'react-router-dom';
 
 const SelectTeam = () => {
   const {user,setUser} = useApplicationState();
   const [teamSelected, setTeamSelected] = useState('');
-  console.log(user.email)
+  const navigate  = useNavigate();
+  
   const handleSelected = async (team) => {
     const data = {
       email : user.email,
@@ -16,9 +18,9 @@ const SelectTeam = () => {
     }
     try {
       const response = await handleNewClub(data);
-      console.log(response);
       const newUserData = await getUser(user.email);
-      console.log(newUserData);
+      setUser(newUserData);
+      navigate('/mainscreen');
     } catch (error) {
       console.error(error);
     }

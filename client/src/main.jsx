@@ -6,6 +6,7 @@ import { setupServices } from '../services/services'
 import App from './App'
 import './index.css'
 import Login from './Login'
+import MainScreen from './MainScreen'
 import SelectTeam from './SelectTeam'
 import Signup from './Signup'
 import Successfull from './Successfull'
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
   {path: '/signup', element: <Signup/>},
   {path: '/successfull', element: <Successfull/>},
-  {path: '/select-team', element: <SelectTeam/>}
+  {path: '/select-team', element: <SelectTeam/>},
+  {path: '/mainscreen', element: <MainScreen/>}
 ])
 
 setupServices();
