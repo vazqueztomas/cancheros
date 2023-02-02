@@ -4,22 +4,26 @@ import {Formik, Form, Field, ErrorMessage,} from 'formik';
 import { useApplicationState } from '../config/state';
 import { userLogin } from '../services/services';
 import { useNavigate } from 'react-router-dom';
+
 const initialValues = {
   email: '',
   password : '',
 }
 const Login = () => {
   const navigate = useNavigate();
-  // const {setUser} = useApplicationState();
+  const [error,setError] = useState()
+  const {setUser} = useApplicationState();
 
   const handleLogin = async (user) => {
     console.log(user);
     try {
       const response = await userLogin(user);
-      console.log('logeado', response);
-      
+      setUser(response.data.userInfo)
+      navigate('/select-team');
     } catch (error) {
-      console.error(error);
+      if (error.response.status == 401){
+        setError(401)
+      } 
     }
   }
 
@@ -45,12 +49,13 @@ const Login = () => {
            <Field type="password" name="password" />
            <ErrorMessage name="password" component="div" />
            <button type="submit">
-             Submit
+             Ingresar
            </button>
           </Label>
           </Form>
         )}
      </Formik>
+        {error == 401 ? <h4 style = {{color: 'red'}}>Email o contraseña inválidos.</h4> : null}
         <button onClick = {() => navigate('/signup')}>Aun no tienes cuenta?</button>
     </div>
   )

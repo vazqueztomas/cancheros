@@ -1,36 +1,31 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { StateProvider } from '../config/state'
 import { setupServices } from '../services/services'
 import App from './App'
 import './index.css'
 import Login from './Login'
+import MainScreen from './MainScreen'
+import SelectTeam from './SelectTeam'
 import Signup from './Signup'
 import Successfull from './Successfull'
 
 const router = createBrowserRouter([
-  {
-  path: '/',
-  element: <App/>
-  },
-  {
-    path: '/login',
-    element: <Login/>
-  },
-  {
-    path: '/signup',
-    element: <Signup/>
-  },
-  {
-    path: '/successfull',
-    element: <Successfull/>
-  }
+  {path: '/', element: <App/>},
+  {path: '/login', element: <Login/>},
+  {path: '/signup', element: <Signup/>},
+  {path: '/successfull', element: <Successfull/>},
+  {path: '/select-team', element: <SelectTeam/>},
+  {path: '/mainscreen', element: <MainScreen/>}
 ])
 
 setupServices();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router = {router}/>
+    <StateProvider>
+      <RouterProvider router = {router}/>
+    </StateProvider>
   </React.StrictMode>,
 )

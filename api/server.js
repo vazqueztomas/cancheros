@@ -14,7 +14,9 @@ server.get('/', (req, res, next) => {
   return res.json('Cancheros API.')
 })
 
+server.use('/users', require('./routes/users'));
 server.use("/auth", require("./routes/auth"));
+server.use("/teams", require("./routes/teams"))
 
 console.log(process.env.DB_DEVELOPMENT);
 connectDB()

@@ -24,3 +24,13 @@ export const userSignUp = async (userData) => {
 	const response = await axios.post('/auth/signup', userData, OPTIONS);
 	return response.data;
 }
+
+export const handleNewClub = async (userData) => {
+	const response = await axios.post('/teams/handleNewClub', userData, OPTIONS);
+	return response.data;
+}
+
+export const getUser = async (email) => {
+	const response = await axios.post('/users/getUser', {email}, OPTIONS);
+	return response.data;
+}
