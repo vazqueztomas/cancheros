@@ -26,7 +26,6 @@ const MainScreen = () => {
   const setMatch = async (matchData) => {
     try {
       const response = await setNewMatch(matchData);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
