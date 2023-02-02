@@ -4,7 +4,8 @@ const userSchema = new DB.Schema({
   name: {type: String},
   email: {type: String, required : true},
   password: {type: String, required: true},
-  club: {type:String}
+  club: {type:String},
+  matches: [{playVersus: String, matchDay: Date}],
 })
 
 module.exports = DB.model('User', userSchema);
