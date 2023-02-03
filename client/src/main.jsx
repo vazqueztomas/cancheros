@@ -4,6 +4,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { StateProvider } from '../config/state'
 import { setupServices } from '../services/services'
 import App from './App'
+import PersistLogin from './components/PersistLogin'
 import './index.css'
 import Login from './Login'
 import MainScreen from './MainScreen'
@@ -18,9 +19,11 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path = '/login' element = {<Login/>}/>
   <Route path = '/signup' element = {<Signup/>}/>
   <Route path = '/successfull' element = {<Successfull/>}/>
-  <Route element = {<RequireAuth/>}>
-    <Route path = '/select-team' element = {<SelectTeam/>} />
-    <Route path = '/mainscreen' element = {<MainScreen/>} />
+  <Route element = {<PersistLogin/>}>
+    <Route element = {<RequireAuth/>}>
+      <Route path = '/select-team' element = {<SelectTeam/>} />
+      <Route path = '/mainscreen' element = {<MainScreen/>} />
+    </Route>
   </Route>
   </>
 ))

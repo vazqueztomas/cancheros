@@ -1,8 +1,8 @@
 import axios from "axios";
-import useAuth from './useAuth';
+import { myContext } from "../context/AuthProvider";
 
 const useLogout = () => {
-  const {setAuth} = useAuth();
+  const {setAuth} = myContext();
 
   const logout = async () => {
     setAuth({});

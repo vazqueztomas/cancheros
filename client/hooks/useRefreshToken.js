@@ -1,8 +1,8 @@
 import axios from "axios";
-import useAuth from './useAuth';
+import { myContext } from "../context/AuthProvider";
 
 const useRefreshToken = () => {
-  const {setAuth} = useAuth();
+  const {setAuth} = myContext();
 
   const refresh = async () => {
     const response = await axios.get('/refresh', {
