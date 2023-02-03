@@ -39,8 +39,3 @@ export const setNewMatch = async (matchData) => {
 	const response = await axios.post('/users/setNewMatch', matchData, OPTIONS);
 	return response.data;
 }
-
-export const getMatches = async (userData) => {
-	const response = await axios.get('/users/getMatches', userData, OPTIONS);
-	return response.data;
-}
