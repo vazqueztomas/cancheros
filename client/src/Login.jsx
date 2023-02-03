@@ -16,14 +16,11 @@ const Login = () => {
   const {auth, setAuth, setPersist} = myContext();
   
   const handleLogin = async (user) => {
-    console.log(user);
     try {
       const response = await userLogin(user);
       const accessToken = response.data.userInfo.accessToken;
-      setAuth({accessToken})
-      console.log(response.data.userInfo);
+      setAuth({user, accessToken})
       setPersist(true);
-      console.log(auth)
       navigate('/select-team');
     } catch (error) {
       console.error(error);

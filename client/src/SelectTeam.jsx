@@ -13,13 +13,14 @@ const SelectTeam = () => {
   const navigate  = useNavigate();
   
   const handleSelected = async (team) => {
+
     const data = {
-      email : auth.email,
+      email : auth.user.email,
       clubName: team,
     }
     try {
       const response = await handleNewClub(data);
-      const newUserData = await getUser(auth.email);
+      const newUserData = await getUser(auth.user.email);
       setAuth(newUserData);
       navigate('/mainscreen');
     } catch (error) {
