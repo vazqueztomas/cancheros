@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import { useApplicationState } from '../config/state'
 import { getUser, handleNewClub } from '../services/services'
 import Team from './Team'
 import { teams } from './teams'
@@ -13,7 +12,6 @@ const SelectTeam = () => {
   const navigate  = useNavigate();
   
   const handleSelected = async (team) => {
-
     const data = {
       email : auth.user.email,
       clubName: team,

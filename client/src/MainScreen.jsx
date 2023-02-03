@@ -13,10 +13,9 @@ const inputDate = (props) => (
 const MainScreen = () => {
   const {auth} = myContext();
   const [matches, setMatches] = useState([])
-
   const [visibleForm, setVisibleForm] = useState(false);
   const initialValues = {
-    email: auth.email,
+    email: auth.user.email,
     playVersus: '',
     matchDay: '',
   }
