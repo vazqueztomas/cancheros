@@ -22,9 +22,8 @@ const Login = () => {
       console.log(response.data.userInfo);
       const accessToken = response.data.userInfo.accessToken;
       console.log(auth)
-      setAuth(accessToken)
+      setAuth({accessToken})
       setPersist(true);
-      setUser(response.data.userInfo)
       navigate('/select-team');
     } catch (error) {
       console.error(error);

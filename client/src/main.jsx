@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
-import { StateProvider } from '../config/state'
+import { AuthProvider } from '../context/AuthProvider'
 import { setupServices } from '../services/services'
 import App from './App'
 import PersistLogin from './components/PersistLogin'
@@ -32,8 +32,8 @@ setupServices();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <StateProvider>
+    <AuthProvider>
       <RouterProvider router = {router}/>
-    </StateProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
