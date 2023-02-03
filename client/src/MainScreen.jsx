@@ -4,17 +4,18 @@ import { Field, Form, Formik } from 'formik';
 import {teams} from './teams'
 import { useApplicationState } from '../config/state';
 import { setNewMatch } from '../services/services';
+import { myContext } from '../context/AuthProvider';
 
 const inputDate = (props) => (
   <input type = 'date' {...props}/>
 )
 
 const MainScreen = () => {
-  const {user} = useApplicationState();
+  const {auth} = myContext();
 
   const [visibleForm, setVisibleForm] = useState(false);
   const initialValues = {
-    email: user.email,
+    email: auth.email,
     playVersus: '',
     matchDay: '',
   }

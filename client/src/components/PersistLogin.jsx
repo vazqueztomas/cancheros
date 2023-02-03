@@ -8,7 +8,7 @@ const PersistLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const refresh = useRefreshToken();
 
-  const {auth} = myContext();
+  const {auth, persist} = myContext();
 
   useEffect(() => {
     const verifyRefreshToken = async () => {
@@ -29,12 +29,16 @@ const PersistLogin = () => {
     console.log(`aT: ${JSON.stringify(auth?.accessToken)}`); 
   }, []);
 
+
   return (
     <>
-    { isLoading ? 
-      <p>Loading..</p> 
-      : <Outlet></Outlet>}
-    </>
+    {!persist
+        ? <Outlet />
+        : isLoading
+            ? <p>Loading...</p>
+            : <Outlet />
+    }
+</>
   )
 }
 

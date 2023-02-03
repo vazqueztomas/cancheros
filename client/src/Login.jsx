@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import {Formik, Form, Field, ErrorMessage,} from 'formik';
 import { useApplicationState } from '../config/state';
@@ -19,16 +19,20 @@ const Login = () => {
     console.log(user);
     try {
       const response = await userLogin(user);
-      console.log(response.data.userInfo);
       const accessToken = response.data.userInfo.accessToken;
-      console.log(auth)
       setAuth({accessToken})
+      console.log(response.data.userInfo);
       setPersist(true);
+      console.log(auth)
       navigate('/select-team');
     } catch (error) {
       console.error(error);
     }
   }
+
+  useEffect(() => {
+    localStorage.setItem("persist", true);
+  }, [])
 
   return (
     <div>
