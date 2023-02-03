@@ -5,11 +5,13 @@ const credentials = require('./middleware/credentials');
 const corsOptions = require('./config/corsOptions')
 const cors = require('cors');
 require('dotenv').config();
+const cookieParser = require('cookie-parser')
 const PORT = process.env.PORT || 8080;
 
 server.use(credentials);
 server.use(cors(corsOptions))
 server.use(express.json());
+server.use(cookieParser())
 server.get('/', (req, res, next) => {
   return res.json('Cancheros API.')
 })
