@@ -5,21 +5,23 @@ import { getUser, handleNewClub } from '../services/services'
 import Team from './Team'
 import { teams } from './teams'
 import { useNavigate } from 'react-router-dom';
+import { myContext } from '../context/AuthProvider'
 
 const SelectTeam = () => {
-  const {user,setUser} = useApplicationState();
+  const {auth, setAuth} = myContext();
   const [teamSelected, setTeamSelected] = useState('');
   const navigate  = useNavigate();
   
   const handleSelected = async (team) => {
+
     const data = {
-      email : user.email,
+      email : auth.user.email,
       clubName: team,
     }
     try {
       const response = await handleNewClub(data);
-      const newUserData = await getUser(user.email);
-      setUser(newUserData);
+      const newUserData = await getUser(auth.user.email);
+      setAuth(newUserData);
       navigate('/mainscreen');
     } catch (error) {
       console.error(error);

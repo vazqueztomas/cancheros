@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import {Formik, Form, Field, ErrorMessage,} from 'formik';
 import { useApplicationState } from '../config/state';
 import { userLogin } from '../services/services';
 import { useNavigate } from 'react-router-dom';
+import {myContext} from '../context/AuthProvider';
 
 const initialValues = {
   email: '',
@@ -12,20 +13,23 @@ const initialValues = {
 const Login = () => {
   const navigate = useNavigate();
   const [error,setError] = useState()
-  const {setUser} = useApplicationState();
-
+  const {auth, setAuth, setPersist} = myContext();
+  
   const handleLogin = async (user) => {
-    console.log(user);
     try {
       const response = await userLogin(user);
-      setUser(response.data.userInfo)
+      const accessToken = response.data.userInfo.accessToken;
+      setAuth({user, accessToken})
+      setPersist(true);
       navigate('/select-team');
     } catch (error) {
-      if (error.response.status == 401){
-        setError(401)
-      } 
+      console.error(error);
     }
   }
+
+  useEffect(() => {
+    localStorage.setItem("persist", true);
+  }, [])
 
   return (
     <div>
