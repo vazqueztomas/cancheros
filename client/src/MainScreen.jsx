@@ -54,9 +54,10 @@ const MainScreen = () => {
       {visibleForm ? 
       <Formik
         initialValues={initialValues}
-        onSubmit = {(values) => {
+        onSubmit = {async (values) => {
           console.log(values)
-          setMatch(values)
+          await setMatch(values)
+          await getMatches()
         }}
       >
         {() => (

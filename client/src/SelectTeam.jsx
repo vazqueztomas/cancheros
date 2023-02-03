@@ -21,7 +21,6 @@ const SelectTeam = () => {
     try {
       const response = await handleNewClub(data);
       const newUserData = await getUser(auth.user.email);
-      setAuth(newUserData);
       navigate('/mainscreen');
     } catch (error) {
       console.error(error);
