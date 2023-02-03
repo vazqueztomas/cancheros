@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components';
 import { Field, Form, Formik } from 'formik';
 import {teams} from './teams'
-import { useApplicationState } from '../config/state';
-import { setNewMatch } from '../services/services';
+import { getUser, setNewMatch } from '../services/services';
 import { myContext } from '../context/AuthProvider';
+import MatchCard from './MatchCard';
 
 const inputDate = (props) => (
   <input type = 'date' {...props}/>
@@ -12,6 +12,7 @@ const inputDate = (props) => (
 
 const MainScreen = () => {
   const {auth} = myContext();
+  const [matches, setMatches] = useState([])
 
   const [visibleForm, setVisibleForm] = useState(false);
   const initialValues = {
@@ -24,6 +25,19 @@ const MainScreen = () => {
     return el.strTeam;
   })
 
+  const getMatches = async () => {
+    try {
+      const response = await getUser(auth.user.email);
+      setMatches(response.matches)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getMatches()
+  },[])
+
   const setMatch = async (matchData) => {
     try {
       const response = await setNewMatch(matchData);
@@ -34,6 +48,8 @@ const MainScreen = () => {
   return (
     <Container>
       <button onClick = {() => setVisibleForm(!visibleForm)}>Añadir partido</button>
+
+      {matches ? matches.map((el, ind) => <MatchCard key = {ind} clubOne={el.playVersus} clubTwo = {el.playVersus} date = {el.matchDay}/>) : null}
 
       {visibleForm ? 
       <Formik
