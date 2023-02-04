@@ -2,19 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 
 const MatchCard = ({clubOne, clubTwo, date}) => {
-  const dateParsed = date.toString().slice(0,10)
-  console.log(dateParsed)
+  const dateParsed = date.toString().slice(0,10);
   return (
     <Container>
-      <div style = {{display: 'flex', flexDirection: 'column'}}>
+      <Column>
       <h6>{clubOne}</h6>
       <p>vs</p>
       <h6>{clubTwo}</h6>
-      </div>
-      <div>
+      </Column>
+      <Column>
       <p>El dia:</p>
       <p>{dateParsed}</p>
-      </div>
+      </Column>
     </Container>
   )
 }
@@ -29,7 +28,12 @@ const Container = styled.div`
   gap: 16px;
   & h6, p{
     margin: 0
-  }
+};
+`
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
 export default MatchCard
