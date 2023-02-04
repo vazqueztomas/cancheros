@@ -11,7 +11,7 @@ const MatchCard = ({clubOne, clubTwo, date}) => {
       <h6>{clubTwo}</h6>
       </Column>
       <Column>
-      <p>El dia:</p>
+      <h6>El dia:</h6>
       <p>{dateParsed}</p>
       </Column>
     </Container>
@@ -22,6 +22,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   border: 1px solid white;
+  border-radius: 8px;
   padding: 16px;
   justify-content: space-around;
   align-items: center;

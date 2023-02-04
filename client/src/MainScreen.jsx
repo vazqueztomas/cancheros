@@ -46,7 +46,6 @@ const MainScreen = () => {
   }
   return (
     <Container>
-      <button onClick = {() => setVisibleForm(!visibleForm)}>Añadir partido</button>
 
       {matches ? matches.map((el, ind) => <MatchCard key = {ind} clubOne={el.playVersus} clubTwo = {el.playVersus} date = {el.matchDay}/>) : null}
 
@@ -73,6 +72,9 @@ const MainScreen = () => {
         </Form>
         )}
       </Formik> : null}
+
+      <button onClick = {() => setVisibleForm(!visibleForm)}>Añadir partido</button>
+
     </Container>
   )
 }
@@ -80,6 +82,7 @@ const MainScreen = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 8px;
 `
 
 export default MainScreen
