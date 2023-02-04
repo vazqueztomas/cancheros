@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { myContext } from '../context/AuthProvider'
 
 const SelectTeam = () => {
-  const {auth, setAuth} = myContext();
+  const {auth} = myContext();
   const [teamSelected, setTeamSelected] = useState('');
   const navigate  = useNavigate();
   
