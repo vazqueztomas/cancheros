@@ -39,3 +39,8 @@ export const setNewMatch = async (matchData) => {
 	const response = await axios.post('/users/setNewMatch', matchData, OPTIONS);
 	return response.data;
 }
+
+export const deleteMatch = async (matchData) => {
+	const response = await axios.delete('/users/deleteMatch', matchData, OPTIONS);
+	return response.data;
+}
