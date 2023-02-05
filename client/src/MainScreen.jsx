@@ -5,6 +5,7 @@ import {teams} from './teams'
 import { getUser, setNewMatch } from '../services/services';
 import { myContext } from '../context/AuthProvider';
 import MatchCard from './MatchCard';
+import LogoutButton from './LogoutButton';
 
 const inputDate = (props) => (
   <input type = 'date' {...props}/>
@@ -46,7 +47,7 @@ const MainScreen = () => {
   }
   return (
     <Container>
-
+      <LogoutButton/>
       {matches ? matches.map((el, ind) => <MatchCard key = {ind} clubOne={el.playVersus} clubTwo = {el.playVersus} date = {el.matchDay}/>) : null}
 
       {visibleForm ? 
