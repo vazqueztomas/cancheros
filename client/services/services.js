@@ -43,3 +43,8 @@ export const deleteMatch = async (matchData) => {
 	const response = await axios.delete('/users/deleteMatch', matchData, OPTIONS);
 	return response.data;
 }
+
+export const userLogout = async () => {
+	const response = await axios.post('/auth/logout', OPTIONS);
+	return response.data;
+}
