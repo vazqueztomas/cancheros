@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import {Formik, Form, Field, ErrorMessage,} from 'formik';
-import { useApplicationState } from '../config/state';
 import { userLogin } from '../services/services';
 import { useNavigate } from 'react-router-dom';
 import {myContext} from '../context/AuthProvider';
+import { Container, SecondButton } from './components/styles';
 
 const initialValues = {
   email: '',
@@ -13,7 +13,7 @@ const initialValues = {
 const Login = () => {
   const navigate = useNavigate();
   const [error,setError] = useState()
-  const {auth, setAuth, setPersist} = myContext();
+  const { setAuth, setPersist} = myContext();
   
   const handleLogin = async (user) => {
     try {
@@ -32,7 +32,7 @@ const Login = () => {
   }, [])
 
   return (
-    <div>
+    <Container>
      <Formik
       initialValues={initialValues}
       validate = {values => {}}
@@ -49,7 +49,7 @@ const Login = () => {
 
           <Label>
 
-           <label htmlFor = 'password'>Password</label>
+           <label htmlFor = 'password'>Contraseña</label>
            <Field type="password" name="password" />
            <ErrorMessage name="password" component="div" />
            <button type="submit">
@@ -60,14 +60,14 @@ const Login = () => {
         )}
      </Formik>
         {error == 401 ? <h4 style = {{color: 'red'}}>Email o contraseña inválidos.</h4> : null}
-        <button onClick = {() => navigate('/signup')}>Aun no tienes cuenta?</button>
-    </div>
+        <SecondButton onClick = {() => navigate('/signup')}>Aun no tienes cuenta?</SecondButton>
+    </Container>
   )
 }
 
 const Label = styled.div`
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 `
 
 export default Login;
