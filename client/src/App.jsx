@@ -1,15 +1,20 @@
 import { useNavigate } from 'react-router-dom'
-import './App.css'
-import Login from './Login'
+import { Container } from './components/styles';
+import './index.css';
 
 function App() {
   const navigate = useNavigate();
   return (
-    <div className="App">
+    <Container>
+      <div>
       <h1>Cancheros</h1>
-      <p>Cancheros es la aplicación que todo futbolista necesita. Querés agendar todos los partidos a los que vas?</p>
-      <button onClick = {() => navigate('/login')}>Logear</button>
-    </div>
+      <p>Tu historial de partidos. </p>
+      <div style = {{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+      <button onClick = {() => navigate('/login')}>INGRESAR</button>
+      <button onClick = {() => navigate('/signup')}>Registrarse</button>
+      </div>
+      </div>
+    </Container>
   )
 }
 
