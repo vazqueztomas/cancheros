@@ -1,10 +1,7 @@
-# cancheros
-You need a history for the matches where you have been?<br></br>
-Necesitas un historial para los partidos a los que fuiste a la cancha?
 
-<h3>Cancheros is your solution!</h3>
-<h3>Cancheros es tu solución!</h3>
+![cancheros flyer github](https://user-images.githubusercontent.com/78186062/217568933-f4fa05e5-7fae-42ae-bbc3-1c493e50bf14.png)
 
+<h1>Documentación</h1>
 <h6>English</h6>
 
 Cancheros is a web application made in React + NodeJS (with Express and MongoDB). 
