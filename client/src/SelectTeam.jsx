@@ -38,7 +38,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 1em;
+  background-color: #01010190;
+  text-align: center;
+  height: 100vh;
+  justify-content: center;
+  backdrop-filter: blur(10px);
 `
 const TeamsContainer = styled.div`
   display: flex;
@@ -52,6 +56,7 @@ const Cartel = styled.div`
   display: flex;
   bottom: 0;
   justify-content: space-between;
+  padding: 0 10%;
 `
 
 export default SelectTeam

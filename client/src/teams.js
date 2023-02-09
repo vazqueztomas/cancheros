@@ -6,12 +6,12 @@ export const teams = [
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/2fovf21624191654.png"
     },
     {
-      "strTeam": "Argentinos Juniors",
+      "strTeam": "Argentinos Jrs",
       "strTeamBadge": "https://www.thesportsdb.com/images/media/team/badge/me7a601580842569.png",
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/eg6p7q1624191806.png"
     },
     {
-      "strTeam": "Arsenal Sarandi",
+      "strTeam": "Arsenal",
       "strTeamBadge": "https://www.thesportsdb.com/images/media/team/badge/t5yzu71580842576.png",
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/yxdjae1624191854.png"
     },
@@ -26,7 +26,7 @@ export const teams = [
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/ekmhy61624216108.png"
     },
     {
-      "strTeam": "Club Atlético Barracas Central",
+      "strTeam": "Barracas Central",
       "strTeamBadge": "https://www.thesportsdb.com/images/media/team/badge/0t0hml1578821665.png"
     },
     {
@@ -41,10 +41,9 @@ export const teams = [
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/7jghcc1624217022.png"
     },
     {
-      "strTeam": "Colon de Santa Fe",
+      "strTeam": "Colon",
       "strTeamBadge": "https://www.thesportsdb.com/images/media/team/badge/r20t6u1604355082.png",
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/lcoqis1668649884.png",
       "strYoutube": "www.youtube.com/user/ClubColonOficial",
-      "strLocked": "unlocked"
     }
   ]
