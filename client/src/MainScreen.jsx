@@ -15,8 +15,10 @@ const MainScreen = () => {
   const {auth} = myContext();
   const [matches, setMatches] = useState([])
   const [visibleForm, setVisibleForm] = useState(false);
+  console.log(auth);
+  let email = auth?.user.email || '';
   const initialValues = {
-    email: auth.user.email,
+    email,
     playVersus: '',
     matchDay: '',
   }
@@ -48,7 +50,9 @@ const MainScreen = () => {
   return (
     <Container>
       <LogoutButton/>
+      <div style = {{display: 'flex', justifyContent: 'center', flexDirection: 'column', padding: '24px', gap: '16px'}}>
       {matches ? matches.map((el, ind) => <MatchCard key = {ind} clubOne={el.playVersus} clubTwo = {el.playVersus} date = {el.matchDay}/>) : null}
+      </div>
 
       {visibleForm ? 
       <Formik
@@ -83,6 +87,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  backdrop-filter: blur(10px);
+  width: 100vw;
+  height: 100vh;
+  background-color: #01010110
 `
 
 export default MainScreen

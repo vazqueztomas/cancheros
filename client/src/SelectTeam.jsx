@@ -42,7 +42,6 @@ const Container = styled.div`
   text-align: center;
   height: 100vh;
   justify-content: center;
-  backdrop-filter: blur(10px);
 `
 const TeamsContainer = styled.div`
   display: flex;

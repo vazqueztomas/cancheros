@@ -10,6 +10,8 @@ const PersistLogin = () => {
 
   const {auth, persist} = myContext();
 
+  console.log(auth);
+
   useEffect(() => {
     const verifyRefreshToken = async () => {
       try {
@@ -21,7 +23,7 @@ const PersistLogin = () => {
       }
     } 
 
-    !auth.accessToken ? verifyRefreshToken() : setIsLoading(false);
+    !auth?.accessToken && persist ? verifyRefreshToken() : setIsLoading(false);
   }, []);
 
   return (
