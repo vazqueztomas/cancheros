@@ -13,14 +13,14 @@ const initialValues = {
 const Login = () => {
   const navigate = useNavigate();
   const [error,setError] = useState()
-  const { setAuth, setPersist} = myContext();
+  const { auth, setAuth, setPersist} = myContext();
   
   const handleLogin = async (user) => {
     try {
       const response = await userLogin(user);
       const accessToken = response.data.userInfo.accessToken;
-      setAuth({user, accessToken})
-      setPersist(true);
+      let userLogged = response.data;
+      setAuth({userLogged, accessToken});
       navigate('/select-team');
     } catch (error) {
       console.error(error);
