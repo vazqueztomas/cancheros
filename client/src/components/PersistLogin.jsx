@@ -10,8 +10,6 @@ const PersistLogin = () => {
 
   const {auth, persist} = myContext();
 
-  console.log(auth);
-
   useEffect(() => {
     const verifyRefreshToken = async () => {
       try {
