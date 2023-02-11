@@ -10,15 +10,16 @@ const SelectTeam = () => {
   const {auth} = myContext();
   const [teamSelected, setTeamSelected] = useState('');
   const navigate  = useNavigate();
-  console.log(auth.userLogged.userInfo.email)
+  const email = auth.userLog.userInfo.email;
+  console.log(email);
   const handleSelected = async (team) => {
     const data = {
-      email : auth.userLogged.userInfo.email,
+      email,
       clubName: team,
     }
     try {
       const response = await handleNewClub(data);
-      const newUserData = await getUser(auth.userLogged.userInfo.email);
+      const newUserData = await getUser(email);
       navigate('/mainscreen');
     } catch (error) {
       console.error(error);

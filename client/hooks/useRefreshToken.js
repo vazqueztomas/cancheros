@@ -1,4 +1,3 @@
-import axios from "axios";
 import { myContext } from "../context/AuthProvider";
 import { handleRefreshToken } from "../services/services";
 

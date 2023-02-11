@@ -19,9 +19,11 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path = '/login' element = {<Login/>}/>
   <Route path = '/signup' element = {<Signup/>}/>
   <Route path = '/successfull' element = {<Successfull/>}/>
+  <Route element = {<PersistLogin/>}>
     <Route element = {<RequireAuth/>}>
       <Route path = '/select-team' element = {<SelectTeam/>} />
       <Route path = '/mainscreen' element = {<MainScreen/>} />
+    </Route>
   </Route>
   </>
 ))
