@@ -19,8 +19,9 @@ const Login = () => {
     try {
       const response = await userLogin(user);
       const accessToken = response.data.userInfo.accessToken;
-      let userLogged = response.data;
-      setAuth({userLogged, accessToken});
+      let userLog = response.data;
+      setAuth({userLog, accessToken});
+      setPersist(true);
       navigate('/select-team');
     } catch (error) {
       console.error(error);
