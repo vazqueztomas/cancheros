@@ -23,46 +23,51 @@ const handleSignup = async(req, res) => {
 };
 
 const handleLogin = async (req, res) => {
-  const {email, password} = req.body;
-  if (!email || !password) return res.status(404).json('Email y contraseña obligatorios');
+  const { email, password } = req.body;
+  if (!email || !password)
+    return res.status(400).json("El email y la contraseña son obligatorios.");
 
-	const foundUser = await User.findOne({ email }).exec();
-	if (!foundUser) return res.status(401).json('No se encontró el usuario.')
-
+  const foundUser = await User.findOne({ email }).exec();
+  if (!foundUser) return res.status(401).json("No se encontró el usuario.");
   const match = await bcrypt.compare(password, foundUser.password);
-	if (match) {
-		const accessToken = jwt.sign(
-			{
-				"UserInfo": {
-					"id": foundUser._id,
-					"name": foundUser.name,
-					"email": foundUser.email,
-				}
-			},
-			process.env.JWT_ACCESS_TOKEN_SECRET,
-			{ expiresIn: '240s' }
-		);
+  if (match) {
+    const accessToken = jwt.sign(
+      {
+        UserInfo: {
+          id: foundUser._id,
+          name: foundUser.name,
+          email: foundUser.email,
+        },
+      },
+      process.env.JWT_ACCESS_TOKEN_SECRET,
+      { expiresIn: "240s" }
+    );
 
-		const refreshToken = jwt.sign(
-			{ "username": foundUser.username },
-			process.env.JWT_REFRESH_TOKEN_SECRET,
-			{ expiresIn: '1d' }
-		);
+    const refreshToken = jwt.sign(
+      { username: foundUser.username },
+      process.env.JWT_REFRESH_TOKEN_SECRET,
+      { expiresIn: "1d" }
+    );
 
-		foundUser.refreshToken = refreshToken;
-		await foundUser.save();
+    foundUser.refreshToken = refreshToken;
+    await foundUser.save();
 
-		res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+    res.cookie("jwt", refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
 
-		// Send authorization roles and access token to user
-		const { id, name, email } = foundUser;
-		res.json({ userInfo: { id, name, email, accessToken }});
-
-	} else {
-		return res.status(401).json('No autorizado.')
-	}
-}
-
+    // Send authorization roles and access token to user
+    const { id, name, email } = foundUser;
+    res.json({
+      userInfo: { id, name, email, accessToken },
+    });
+  } else {
+    return res.status(401).json("No autorizado.");
+  }
+};
 const handleRefreshToken = async (req,res) => {
 	const cookies = req.cookies;
 
