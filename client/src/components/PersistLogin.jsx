@@ -21,12 +21,12 @@ const PersistLogin = () => {
       }
     } 
 
-    !auth?.accessToken && persist ? verifyRefreshToken() : setIsLoading(false);
+    !auth ? verifyRefreshToken() : setIsLoading(false);
   }, []);
 
   return (
     <>
-    {!persist
+    {!auth
         ? <Outlet />
         : isLoading
             ? <p>Loading...</p>

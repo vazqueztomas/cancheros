@@ -36,8 +36,8 @@ const Login = () => {
      <Formik
       initialValues={initialValues}
       validate = {values => {}}
-      onSubmit = {(valores) => {
-        handleLogin(valores);
+      onSubmit = {async (valores) => {
+        await handleLogin(valores);
       }}>
         {() => (
           <Form>

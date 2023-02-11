@@ -48,3 +48,8 @@ export const userLogout = async () => {
 	const response = await axios.post('/auth/logout', OPTIONS);
 	return response.data;
 }
+
+export const handleRefreshToken = async () => {
+	const response = await axios.get('/auth/refresh', OPTIONS);
+  return response;
+}

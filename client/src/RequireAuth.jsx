@@ -4,7 +4,6 @@ import { myContext } from "../context/AuthProvider";
 const RequireAuth = () => {
   const {auth} = myContext();
   const location = useLocation();
-
   return (
     auth?.accessToken ?  
       <Outlet/> : 

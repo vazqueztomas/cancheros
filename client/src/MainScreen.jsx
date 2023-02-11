@@ -16,7 +16,7 @@ const MainScreen = () => {
   const [matches, setMatches] = useState([])
   const [visibleForm, setVisibleForm] = useState(false);
   console.log(auth);
-  let email = auth?.user.email || '';
+  let email = auth?.userLogged.userInfo.email || '';
   const initialValues = {
     email,
     playVersus: '',
@@ -29,7 +29,7 @@ const MainScreen = () => {
 
   const getMatches = async () => {
     try {
-      const response = await getUser(auth.user.email);
+      const response = await getUser(auth.userLogged.userInfo.email);
       setMatches(response.matches)
     } catch (error) {
       console.error(error);
