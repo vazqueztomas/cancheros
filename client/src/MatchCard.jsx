@@ -5,14 +5,14 @@ const MatchCard = ({clubOne, clubTwo, date}) => {
   const dateParsed = date.toString().slice(0,10);
   return (
     <Container>
-      <Column>
-      <h6>{clubOne}</h6>
-      <p>vs</p>
-      <h6>{clubTwo}</h6>
+<Column>
+      <h6>{dateParsed}</h6>
       </Column>
       <Column>
-      <h6>El dia:</h6>
-      <p>{dateParsed}</p>
+      <div style={{display: 'flex', width: '100%', justifyContent: 'space-around', flexDirection: 'row'}}>
+      <h6>{clubOne}</h6>
+       <h6>{clubTwo}</h6>
+      </div>
       </Column>
     </Container>
   )
@@ -20,12 +20,11 @@ const MatchCard = ({clubOne, clubTwo, date}) => {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border: 1px solid white;
   border-radius: 8px;
   padding: 16px;
   justify-content: space-around;
-  align-items: center;
   gap: 16px;
   & h6, p{
     margin: 0
@@ -35,6 +34,10 @@ const Container = styled.div`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
+
+  :nth-child(2){
+    text-align: center;
+  }
 `
 
 export default MatchCard
