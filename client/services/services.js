@@ -53,3 +53,8 @@ export const handleRefreshToken = async () => {
 	const response = await axios.get('/auth/refresh', OPTIONS);
   return response;
 }
+
+export const getTeams = async () => {
+	const response = await axios.get('/getTeams', OPTIONS);
+  return response.data;
+}
