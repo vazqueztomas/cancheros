@@ -55,6 +55,6 @@ export const handleRefreshToken = async () => {
 }
 
 export const getTeams = async () => {
-	const response = await axios.get('/getTeams', OPTIONS);
+	const response = await axios.get('/teams/getTeams', OPTIONS);
   return response.data;
 }
