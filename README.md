@@ -11,6 +11,7 @@ The application is made with React, NodeJS, Mongo (db) and Express. For the styl
 The API is hosted in <b><i>'Render'.</i></b>
 
 The client use a JSON with the names of the clubs, teams badges and the jerseys.
+The API and all functions we are created by 0, for better functionality system.
 <hr>
 
 <h6>Spanish</h6>
@@ -25,3 +26,4 @@ The application is made with React, NodeJS, Mongo (db) and Express. For the styl
 The API is hosted in <b><i>'Render'.</i></b>
 
 El cliente utiliza un JSON con el nombre de los clubes, sus escudos y (próximamente) sus camisetas.
+La API y todas sus funciones fueron creadas desde cero para una mejor funcionalidad del sistema.
