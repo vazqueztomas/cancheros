@@ -5,7 +5,6 @@ import { scrollToBottom } from './components/scrollToBottom';
 
 const Team = ({name, src, setTeamSelected}) => {
   const handleTeam = (name) => {
-    setSelected(true);
     setTeamSelected(name);
     scrollToBottom();
   }
