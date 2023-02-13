@@ -8,6 +8,7 @@ const dbOptions = {
 
 const connectDB = async () => {
 	try {
+		DB.set('strictQuery', false)
 		await DB.connect(connectionString, dbOptions);
 		console.log(`Database connection successful).`);
 	} catch (error) {
