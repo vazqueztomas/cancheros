@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components';
 import { Field, Form, Formik } from 'formik';
-import {teams} from './teams'
-import { getUser, setNewMatch } from '../services/services';
+import { getUser, setNewMatch, getTeams } from '../services/services';
 import { myContext } from '../context/AuthProvider';
 import MatchCard from './MatchCard';
 import LogoutButton from './LogoutButton';
@@ -17,16 +16,13 @@ const MainScreen = () => {
   const [visibleForm, setVisibleForm] = useState(false);
   const [userMainClub, setUserMainClub] = useState(null)
   const email = auth.userLog.userInfo.email;
+  const [teams, setTeams] = useState([])
 
   const initialValues = {
     email,
     playVersus: '',
     matchDay: '',
   }
-
-  const teamsNames = teams.map((el, ind) => {
-    return el.strTeam;
-  })
 
   const getMatches = async () => {
     try {
@@ -38,8 +34,18 @@ const MainScreen = () => {
     }
   }
 
+  const getTeam = async() => {
+    try {
+      const response = await getTeams();
+      setTeams(response.teams)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffect(() => {
-    getMatches()
+    getMatches();
+    getTeam();
   },[])
 
   const setMatch = async (matchData) => {
@@ -50,11 +56,13 @@ const MainScreen = () => {
     }
   }
 
+  console.log(teams)
+
   return (
     <Container>
       <LogoutButton/>
       <div style = {{display: 'flex', justifyContent: 'center', flexDirection: 'column', padding: '24px', gap: '16px'}}>
-      {matches ? matches.map((el, ind) => <MatchCard key = {ind} clubOne={userMainClub} clubTwo = {el.playVersus} date = {el.matchDay}/>) : null}
+      {matches ? matches.map((el, ind) => <MatchCard key = {ind} clubOne={userMainClub} clubTwo = {el.playVersus} date = {el.matchDay} teams = {teams}/>) : null}
       </div>
 
       {visibleForm ? 
@@ -69,7 +77,7 @@ const MainScreen = () => {
           <Form style={{display: 'flex', flexDirection: 'column'}}>
           <label>Contra quién jugó tu equipo?</label>
           <Field as = 'select' name = 'playVersus'>
-            {teamsNames.map((el, ind) => <option key = {ind}>{el}</option>)}
+            {teams.map((el, ind) => <option key = {ind}>{el.strTeam}</option>)}
           </Field>
 
           <label htmlFor='matchDay'>En que fecha?</label>
