@@ -4,7 +4,8 @@ import {Formik, Form, Field, ErrorMessage,} from 'formik';
 import { userLogin } from '../services/services';
 import { useNavigate } from 'react-router-dom';
 import {myContext} from '../context/AuthProvider';
-import { Container, SecondButton } from './components/styles';
+import {SecondButton } from './components/styles';
+import background from './assets/background.png'
 
 const initialValues = {
   email: '',
@@ -66,6 +67,15 @@ const Login = () => {
     </Container>
   )
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  height: 90vh;
+  background: url(${background}) 20% 20%;
+`
 
 const Label = styled.div`
   display: flex;
