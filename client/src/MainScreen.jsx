@@ -61,10 +61,10 @@ const MainScreen = () => {
   return (
     <Container>
       <LogoutButton/>
-      <div style = {{display: 'flex', justifyContent: 'center', flexDirection: 'column', padding: '24px', gap: '16px'}}>
+      {!visibleForm ? <div style = {{display: 'flex', justifyContent: 'center', flexDirection: 'column', padding: '24px', gap: '8px'}}>
       {matches ? matches.map((el, ind) => <MatchCard key = {ind} clubOne={userMainClub} clubTwo = {el.playVersus} date = {el.matchDay} teams = {teams}/>) : null}
-      </div>
-
+      </div> : null}
+      
       {visibleForm ? 
       <Formik
         initialValues={initialValues}
@@ -84,7 +84,10 @@ const MainScreen = () => {
           <label htmlFor='matchDay'>En que fecha?</label>
           <Field as = {inputDate} name = 'matchDay'/>
 
+          <Botonera>
           <button type = 'submit'>Cargar partido</button>
+          <CancelButton type = 'button' onClick = {() => setVisibleForm(!visibleForm)}>Cancelar</CancelButton>
+          </Botonera>
         </Form>
         )}
       </Formik> : null}
@@ -94,6 +97,12 @@ const MainScreen = () => {
   )
 }
 
+const Botonera = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+`
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -102,6 +111,12 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #01010110;
+`
+
+const CancelButton = styled.button`
+  border: 1px solid #2f2f2f;
+  background-color: transparent;
+  color: white;  
 `
 
 export default MainScreen

@@ -13,19 +13,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  background: url('./assets/background.png');
-  background-repeat: no-repeat;
-  background-size: 680% 100vh;
-  background-position: left;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  width: 100%;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 button {
@@ -38,7 +29,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-  margin: 1em;
+  margin: .5em 1em;
 }
 
 button:hover {

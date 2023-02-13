@@ -18,7 +18,7 @@ const MatchCard = ({clubOne, clubTwo, date, teams}) => {
       {/* <h6>{clubOne}</h6> */}
       <ImgClub src = {firstClubName[0].strTeamBadge}></ImgClub>
         </Column>
-      <p>vs</p>
+      <p>:</p>
       <Column>
        {/* <h6>{clubTwo}</h6> */}
       <ImgClub src = {secondClubName[0].strTeamBadge}></ImgClub>
@@ -30,16 +30,16 @@ const MatchCard = ({clubOne, clubTwo, date, teams}) => {
 }
 
 const ImgClub = styled.img`
-  width: 35px;
+  width: 28px;
 `
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid white;
   border-radius: 8px;
-  padding: 12px;
+  padding: 6px;
   justify-content: space-around;
-  gap: 8px;
+  gap: 4px;
   & h6, p{
     margin: 0
 };
@@ -48,7 +48,10 @@ const Container = styled.div`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-
+  margin: 0 0 4px 0;
+  :nth-child(1) {
+    margin: 0 0 0 8px;
+  }
   :nth-child(2){
     text-align: center;
   }
