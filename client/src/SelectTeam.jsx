@@ -39,10 +39,7 @@ const SelectTeam = () => {
     <Container>
     <h2 style = {{marginTop: '50px'}}>Elegí tu equipo</h2>
     <TeamsContainer>
-      <select>
-      {teams.map((el, index) => <option key = {index} value = {el.strTeam}>{el.strTeam}<img src = {el.strTeamBadge}/></option>)}
-      </select>
-      {/* {teams.map((el, index) => <Team key = {index} name = {el.strTeam} src = {el.strTeamBadge} setTeamSelected = {setTeamSelected}/>)} */}
+      {teams.map((el, index) => <Team key = {index} name = {el.strTeam} src = {el.strTeamBadge} setTeamSelected = {setTeamSelected}/>)}
     </TeamsContainer>
     {teamSelected !== '' ? <Cartel><p>Elegiste <b>{teamSelected}</b>.</p> <button onClick = {() => handleSelected(teamSelected)}>Continuar</button></Cartel> : null}
   </Container>
@@ -54,13 +51,12 @@ const Container = styled.div`
   width: 100%;
   background-color: #01010190;
   text-align: center;
-  height: 100%;
   justify-content: center;
 `
+
 const TeamsContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `

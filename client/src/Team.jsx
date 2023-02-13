@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
+import { scrollToBottom } from './components/scrollToBottom';
 
 const Team = ({name, src, setTeamSelected}) => {
   const handleTeam = (name) => {
-    setTeamSelected(name)
+    setTeamSelected(name);
+    scrollToBottom();
   }
   return (
     <Container onClick = {() => handleTeam(name)}>
@@ -14,13 +16,14 @@ const Team = ({name, src, setTeamSelected}) => {
 }
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid lightgray;
-  width: 75px;
-  height: 75px;
-  margin: 8px;
+  width: auto;
+  min-width: 80%;
+  height: 35px;
+  margin: 2px;
   border-radius: 8px;
   text-align: center;
   gap: 6px;
