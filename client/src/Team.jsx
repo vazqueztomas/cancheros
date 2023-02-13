@@ -2,13 +2,15 @@ import React from 'react'
 import styled from 'styled-components';
 import { scrollToBottom } from './components/scrollToBottom';
 
+
 const Team = ({name, src, setTeamSelected}) => {
   const handleTeam = (name) => {
+    setSelected(true);
     setTeamSelected(name);
     scrollToBottom();
   }
   return (
-    <Container onClick = {() => handleTeam(name)}>
+    <Container onClick = {() => handleTeam(name)} >
       <p>{name}</p>
       <TeamBadge src = {src}/>
     </Container>
@@ -19,7 +21,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid lightgray;
+  border: 1px solid white;
   width: auto;
   min-width: 80%;
   height: 35px;
@@ -27,6 +29,7 @@ const Container = styled.div`
   border-radius: 8px;
   text-align: center;
   gap: 6px;
+  padding: 2px 6px;
   & > p{
     margin: 0 8px;
     text-align: center;
@@ -37,7 +40,7 @@ const Container = styled.div`
 `
 const TeamBadge = styled.img`
   display: flex;
-  max-width: 28px;
+  max-width: 24px;
 `
 
 export default Team

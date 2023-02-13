@@ -35,6 +35,7 @@ const SelectTeam = () => {
       console.error(error);
     }
   }
+
   return (
     <Container>
     <h2 style = {{marginTop: '50px'}}>Elegí tu equipo</h2>
@@ -66,6 +67,7 @@ const Cartel = styled.div`
   bottom: 0;
   justify-content: space-between;
   padding: 0 10%;
+  align-items: center;
 `
 
 export default SelectTeam
