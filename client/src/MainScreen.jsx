@@ -38,7 +38,6 @@ const MainScreen = () => {
     }
   }
 
-  console.log(userMainClub)
   useEffect(() => {
     getMatches()
   },[])
@@ -51,7 +50,6 @@ const MainScreen = () => {
     }
   }
 
-  console.log(auth);
   return (
     <Container>
       <LogoutButton/>
@@ -95,7 +93,7 @@ const Container = styled.div`
   backdrop-filter: blur(10px);
   width: 100vw;
   height: 100vh;
-  background-color: #01010110
+  background-color: #01010110;
 `
 
 export default MainScreen
