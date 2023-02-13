@@ -7,7 +7,7 @@ const Team = ({name, src, setTeamSelected}) => {
   }
   return (
     <Container onClick = {() => handleTeam(name)}>
-      <h6>{name}</h6>
+      <p>{name}</p>
       <TeamBadge src = {src}/>
     </Container>
   )
@@ -18,18 +18,23 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   border: 1px solid lightgray;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   margin: 8px;
   border-radius: 8px;
   text-align: center;
-  & > h6{
+  gap: 6px;
+  & > p{
     margin: 0 8px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
   }
 `
 const TeamBadge = styled.img`
   display: flex;
-  max-width: 36px;
+  max-width: 28px;
 `
 
 export default Team

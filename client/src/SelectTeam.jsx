@@ -37,7 +37,7 @@ const SelectTeam = () => {
   }
   return (
     <Container>
-    <h2>Elegí tu equipo</h2>
+    <h2 style = {{marginTop: '50px'}}>Elegí tu equipo</h2>
     <TeamsContainer>
       {teams.map((el, index) => <Team key = {index} name = {el.strTeam} src = {el.strTeamBadge} setTeamSelected = {setTeamSelected}/>)}
     </TeamsContainer>
@@ -51,7 +51,7 @@ const Container = styled.div`
   width: 100%;
   background-color: #01010190;
   text-align: center;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
 `
 const TeamsContainer = styled.div`
