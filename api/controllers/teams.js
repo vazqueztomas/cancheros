@@ -4,6 +4,7 @@ const teams = require('../data/teams.json');
 const handleNewClub = async (req, res) => {
   try {
     const {email, clubName} = req.body;
+    console.log(clubName)
     const user = await User.findOne({ email });
     if (!user) return res.status(403).json('Acceso denegado.');
 

@@ -15,6 +15,7 @@ const MainScreen = () => {
   const {auth} = myContext();
   const [matches, setMatches] = useState([])
   const [visibleForm, setVisibleForm] = useState(false);
+  const [userMainClub, setUserMainClub] = useState(null)
   const email = auth.userLog.userInfo.email;
 
   const initialValues = {
@@ -31,11 +32,13 @@ const MainScreen = () => {
     try {
       const response = await getUser(email);
       setMatches(response.matches)
+      setUserMainClub(response.club)
     } catch (error) {
       console.error(error);
     }
   }
 
+  console.log(userMainClub)
   useEffect(() => {
     getMatches()
   },[])
@@ -47,11 +50,13 @@ const MainScreen = () => {
       console.log(error);
     }
   }
+
+  console.log(auth);
   return (
     <Container>
       <LogoutButton/>
       <div style = {{display: 'flex', justifyContent: 'center', flexDirection: 'column', padding: '24px', gap: '16px'}}>
-      {matches ? matches.map((el, ind) => <MatchCard key = {ind} clubOne={el.playVersus} clubTwo = {el.playVersus} date = {el.matchDay}/>) : null}
+      {matches ? matches.map((el, ind) => <MatchCard key = {ind} clubOne={userMainClub} clubTwo = {el.playVersus} date = {el.matchDay}/>) : null}
       </div>
 
       {visibleForm ? 
