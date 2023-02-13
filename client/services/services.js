@@ -7,7 +7,7 @@ const OPTIONS = {
 
 export function setupServices() {
 	const devUriBase = "http://localhost:8080";
-	const prodUriBase = "https://cancheros.onrender.com/";
+	const prodUriBase = "https://cancheros.onrender.com";
 	let getBaseUri = () => (window.location.host.includes("localhost") || (window.location.host.includes('127.0.0.1'))) ? devUriBase : prodUriBase;
 	axios.interceptors.request.use((req) => {
 		return { ...req, url: getBaseUri() + req.url };
