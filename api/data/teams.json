@@ -45,6 +45,78 @@
       "strTeamBadge": "https://www.thesportsdb.com/images/media/team/badge/r20t6u1604355082.png",
       "strTeamJersey": "https://www.thesportsdb.com/images/media/team/jersey/lcoqis1668649884.png",
       "strYoutube": "www.youtube.com/user/ClubColonOficial"
+    },
+    {
+      "strTeam": "River Plate",
+      "strTeamBadge": "https://i.ibb.co/GCPpjCD/Logo-River-Plate.png"
+    },
+    {
+      "strTeam": "San Lorenzo",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3201.png"
+    },
+    {
+      "strTeam": "Racing",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3215.png"
+    },
+    {
+      "strTeam": "Unión",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3204.png"
+    },
+    {
+      "strTeam": "Talleres",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3210.png"
+    },
+    {
+      "strTeam": "Vélez",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3208.png"
+    },
+    {
+      "strTeam": "Newells",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3212.png"
+    },
+    {
+      "strTeam": "Olimpo",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3222.png"
+    },
+    {
+      "strTeam": "Rosario Central",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3217.png"
+    },
+    {
+      "strTeam": "Lanús",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3218.png"
+    },
+    {
+      "strTeam": "Godoy Cruz",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/6074.png"
+    },
+    {
+      "strTeam": "Estudiantes",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3206.png"
+    },
+    {
+      "strTeam": "Gimnasia LP",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3205.png"
+    },
+    {
+      "strTeam": "Defensa y Justicia",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/36839.png"
+    },
+    {
+      "strTeam": "Huracán",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/7629.png"
+    },
+    {
+      "strTeam": "Independiente",
+      "strTeamBadge": "https: //assets.b365api.com/images/team/b/3209.png"
+    },
+    {
+      "strTeam": "Belgrano",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/3203.png"
+    },
+    {
+      "strTeam": "Tigre",
+      "strTeamBadge": "https://assets.b365api.com/images/team/b/7628.png"
     }
   ]
 }
