@@ -10,6 +10,7 @@ You can configure your soccer team and keep a list with the matches you have bee
 The application is made with React, NodeJS, Mongo (db) and Express. For the styles I used styled-components.
 The API is hosted in <b><i>'Render'.</i></b>
 
+The client use a JSON with the names of the clubs, teams badges and the jerseys.
 <hr>
 
 <h6>Spanish</h6>
@@ -22,3 +23,5 @@ Para la api se utiliza <b><i>'Render'</i></b> como hosting.
 
 The application is made with React, NodeJS, Mongo (db) and Express. For the styles I used styled-components.
 The API is hosted in <b><i>'Render'.</i></b>
+
+El cliente utiliza un JSON con el nombre de los clubes, sus escudos y (próximamente) sus camisetas.
