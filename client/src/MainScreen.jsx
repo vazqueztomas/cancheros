@@ -71,10 +71,11 @@ const MainScreen = () => {
         onSubmit = {async (values) => {
           await setMatch(values)
           await getMatches()
+          setVisibleForm(!visibleForm)
         }}
       >
         {() => (
-          <Form style={{display: 'flex', flexDirection: 'column'}}>
+          <Form style={{display: 'flex', flexDirection: 'column', padding: '16px'}}>
           <label>Contra quién jugó tu equipo?</label>
           <Field as = 'select' name = 'playVersus'>
             {teams.map((el, ind) => <option key = {ind}>{el.strTeam}</option>)}
@@ -87,8 +88,7 @@ const MainScreen = () => {
         </Form>
         )}
       </Formik> : null}
-
-      <button onClick = {() => setVisibleForm(!visibleForm)}>Añadir partido</button>
+      {!visibleForm && <button onClick = {() => setVisibleForm(!visibleForm)}>Añadir partido</button>}
 
     </Container>
   )
