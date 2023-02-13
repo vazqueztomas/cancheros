@@ -3,15 +3,12 @@ import styled from 'styled-components'
 
 const MatchCard = ({clubOne, clubTwo, date, teams}) => {
   const dateParsed = date.toString().slice(0,10);
-
   const secondClubName = teams.filter(x => x.strTeam === clubTwo);
-  console.log(secondClubName[0].strTeamBadge);
-
   const firstClubName = teams.filter(x => x.strTeam === clubOne);
 
   return (
     <Container>
-<Column>
+      <Column>
       <h6>{dateParsed}</h6>
       </Column>
       <Column>
