@@ -29,36 +29,69 @@ const handleSignup = async (req, res) => {
 };
 
 const handleLogin = async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password)
-    return res.status(400).json("El email y la contraseña son obligatorios.");
+  const cookies = req.cookies;
 
-  const foundUser = await User.findOne({ email }).exec();
-  if (!foundUser) return res.status(401).json("No se encontró el usuario.");
-  const match = await bcrypt.compare(password, foundUser.password);
+  const { user, pwd } = req.body;
+  if (!user || !pwd)
+    return res
+      .status(400)
+      .json({ message: "Username and password are required." });
+
+  const foundUser = await User.findOne({ username: user }).exec();
+  if (!foundUser) return res.sendStatus(401); //Unauthorized
+  // evaluate password
+  const match = await bcrypt.compare(pwd, foundUser.password);
   if (match) {
+    // create JWTs
     const accessToken = jwt.sign(
       {
         UserInfo: {
-          id: foundUser._id,
-          name: foundUser.name,
-          email: foundUser.email,
+          username: foundUser.username,
         },
       },
-      process.env.JWT_ACCESS_TOKEN_SECRET,
-      { expiresIn: "240s" }
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "10s" }
     );
-
-    const refreshToken = jwt.sign(
+    const newRefreshToken = jwt.sign(
       { username: foundUser.username },
-      process.env.JWT_REFRESH_TOKEN_SECRET,
-      { expiresIn: "1d" }
+      process.env.REFRESH_TOKEN_SECRET,
+      { expiresIn: "15s" }
     );
 
-    foundUser.refreshToken = refreshToken;
-    await foundUser.save();
+    // Changed to let keyword
+    let newRefreshTokenArray = !cookies?.jwt
+      ? foundUser.refreshToken
+      : foundUser.refreshToken.filter((rt) => rt !== cookies.jwt);
 
-    res.cookie("jwt", refreshToken, {
+    if (cookies?.jwt) {
+      /* 
+          Scenario added here: 
+              1) User logs in but never uses RT and does not logout 
+              2) RT is stolen
+              3) If 1 & 2, reuse detection is needed to clear all RTs when user logs in
+          */
+      const refreshToken = cookies.jwt;
+      const foundToken = await User.findOne({ refreshToken }).exec();
+
+      // Detected refresh token reuse!
+      if (!foundToken) {
+        // clear out ALL previous refresh tokens
+        newRefreshTokenArray = [];
+      }
+
+      res.clearCookie("jwt", {
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
+      });
+    }
+
+    // Saving refreshToken with current user
+    foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
+    const result = await foundUser.save();
+
+    // Creates Secure Cookie with refresh token
+    res.cookie("jwt", newRefreshToken, {
       httpOnly: true,
       secure: true,
       sameSite: "None",
@@ -66,12 +99,9 @@ const handleLogin = async (req, res) => {
     });
 
     // Send authorization roles and access token to user
-    const { id, name, email } = foundUser;
-    res.json({
-      userInfo: { id, name, email, accessToken },
-    });
+    res.json({ accessToken });
   } else {
-    return res.status(401).json("No autorizado.");
+    res.sendStatus(401);
   }
 };
 
