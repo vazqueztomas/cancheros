@@ -19,8 +19,8 @@ const Login = () => {
   const handleLogin = async (user) => {
     try {
       const response = await userLogin(user);
-      let userInfo = response.data;
-      console.log(response);
+      let userInfo = response.data.userInfo;
+      console.log(userInfo);
       setAuth({ userInfo });
       setPersist(true);
       navigate("/select-team");

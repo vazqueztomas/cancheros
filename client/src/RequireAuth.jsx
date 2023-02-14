@@ -4,7 +4,7 @@ import { myContext } from "../context/AuthProvider";
 const RequireAuth = () => {
   const { auth } = myContext();
   const location = useLocation();
-  return auth.userInfo ? (
+  return auth ? (
     <Outlet />
   ) : (
     <Navigate to={"/login"} state={{ from: location }} replace />
