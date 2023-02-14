@@ -1,7 +1,9 @@
 
 ![cancheros flyer github](https://user-images.githubusercontent.com/78186062/217568933-f4fa05e5-7fae-42ae-bbc3-1c493e50bf14.png)
 
-<h1>Documentación</h1>
+# Cancheros
+
+## Documentation
 <h6>English</h6>
 
 Cancheros is a web application made in React + NodeJS (with Express and MongoDB). 
@@ -12,8 +14,17 @@ The API is hosted in <b><i>'Render'.</i></b>
 
 The client use a JSON with the names of the clubs, teams badges and the jerseys.
 The API and all functions we are created by 0, for better functionality system.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
 <hr>
 
+## Documentación
 <h6>Spanish</h6>
 
 Cancheros es una aplicación web realizada en React + NodeJS (con Express y MongoDB).
@@ -27,3 +38,10 @@ The API is hosted in <b><i>'Render'.</i></b>
 
 El cliente utiliza un JSON con el nombre de los clubes, sus escudos y (próximamente) sus camisetas.
 La API y todas sus funciones fueron creadas desde cero para una mejor funcionalidad del sistema.
+
+## Contribución
+
+Son bienvenidos los pull request. Para cambios mayores, por favor abrir un 'issue' antes,
+asi discutimos y mantenemos el repositorio organizado.
+
+Por favor asegurarse que los test de 'upgrade' son apropiados.
