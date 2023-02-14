@@ -1,23 +1,18 @@
-import { myContext } from "../context/AuthProvider";
-import { handleRefreshToken } from "../services/services";
+// import { myContext } from "../context/AuthProvider";
+// import { handleRefreshToken } from "../services/services";
 
-const useRefreshToken = () => {
-  const {setAuth} = myContext();
+// const useRefreshToken = () => {
+//   const { auth, setAuth } = myContext();
 
-  const refresh = async () => {
-    const response = await handleRefreshToken();
-    console.log(response);
-    setAuth(prev => {
-      return {
-        ...prev,
-        accessToken: response.data.accessToken,
-      }
-    });
+//   const refresh = async () => {
+//     const response = await handleRefreshToken();
+//     console.log(response);
+//     setAuth({ ...auth, accessToken: response.accessToken });
 
-    return response.data.accessToken;
-  }
+//     return response.data.accessToken;
+//   };
 
-  return refresh;
-}
+//   return refresh;
+// };
 
-export default useRefreshToken;
+// export default useRefreshToken;
