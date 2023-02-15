@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { getTeams, handleNewClub } from "../services/services";
+import { getTeams, handleNewClub, getUser } from "../services/services";
 import Team from "./Team";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../context/AuthProvider";
@@ -10,34 +10,34 @@ const SelectTeam = () => {
   const [teamSelected, setTeamSelected] = useState("");
   const [teams, setTeams] = useState([]);
   const navigate = useNavigate();
-  const email = auth?.userLog?.userInfo?.email;
+  const email = auth.userInfo.email;
+  console.log(email);
 
   const getTeam = async () => {
     try {
-      const teams = await getTeams();
-      setTeamSelected(teams.teams);
+      const clubes = await getTeams();
+      setTeams(clubes.teams);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const getUser = async () => {
+  const getClubUser = async (email) => {
     try {
       let user = await getUser(email);
-      user.club ? navigate("/mainscreen") : null;
+      console.log(user);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    getUser();
+    getClubUser(email);
     getTeam();
   }, []);
 
   const handleSelected = async (team) => {
     const data = {
-      email,
       clubName: team,
     };
     try {
