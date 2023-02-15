@@ -10,8 +10,7 @@ const SelectTeam = () => {
   const [teamSelected, setTeamSelected] = useState("");
   const [teams, setTeams] = useState([]);
   const navigate = useNavigate();
-  const email = auth.userInfo.email;
-  console.log(email);
+  const email = localStorage.getItem("email");
 
   const getTeam = async () => {
     try {
@@ -22,9 +21,9 @@ const SelectTeam = () => {
     }
   };
 
-  const getClubUser = async (email) => {
+  const getClubUser = async (data) => {
     try {
-      let user = await getUser(email);
+      let user = await getUser(data);
       console.log(user);
     } catch (error) {
       console.error(error);
@@ -38,6 +37,7 @@ const SelectTeam = () => {
 
   const handleSelected = async (team) => {
     const data = {
+      email,
       clubName: team,
     };
     try {

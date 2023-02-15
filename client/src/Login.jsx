@@ -20,7 +20,7 @@ const Login = () => {
     try {
       const response = await userLogin(user);
       let userInfo = response.data.userInfo;
-      console.log(userInfo);
+      localStorage.setItem("email", userInfo.email);
       setAuth({ userInfo });
       setPersist(true);
       navigate("/select-team");

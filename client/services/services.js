@@ -38,7 +38,7 @@ export const handleNewClub = async (userData) => {
 };
 
 export const getUser = async (email) => {
-  const response = await axios.get("/users/getUser", { email }, OPTIONS);
+  const response = await axios.get("/users/getUser", email, OPTIONS);
   return response.data;
 };
 
