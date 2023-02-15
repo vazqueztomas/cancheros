@@ -1,19 +1,20 @@
-const User = require('../models/User');
-const teams = require('../data/teams.json');
+const User = require("../models/User");
+const teams = require("../data/teams.json");
 
 const handleNewClub = async (req, res) => {
   try {
-    const {email, clubName} = req.body;
+    const { email, clubName } = req.body;
     const user = await User.findOne({ email });
-    if (!user) return res.status(403).json('Acceso denegado.');
+    if (!user) return res.status(403).json("Acceso denegado.");
 
-    const newClub = await User.updateOne(user,{club : clubName})
+    const newClub = await User.updateOne(user, { $set: { club: clubName } });
     res.status(200).json(newClub);
+    console.log(newClub);
   } catch (error) {
     console.error(error);
     return res.json(error);
   }
-}
+};
 
 const getTeams = async (req, res) => {
   try {
@@ -22,6 +23,6 @@ const getTeams = async (req, res) => {
     console.error(error);
     return res.json(error);
   }
-}
+};
 
-module.exports ={ handleNewClub, getTeams};
+module.exports = { handleNewClub, getTeams };
