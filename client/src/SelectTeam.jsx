@@ -21,17 +21,17 @@ const SelectTeam = () => {
     }
   };
 
-  const getClubUser = async (data) => {
+  const getClubUser = async () => {
     try {
-      let user = await getUser(data);
-      console.log(user);
+      const user = await getUser(email);
+      user.data.club ? navigate("/mainscreen") : null;
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    getClubUser(email);
+    getClubUser();
     getTeam();
   }, []);
 

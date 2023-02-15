@@ -38,8 +38,9 @@ export const handleNewClub = async (userData) => {
 };
 
 export const getUser = async (email) => {
-  const response = await axios.get("/users/getUser", email, OPTIONS);
-  return response.data;
+  console.log(email, "desde servicio");
+  const response = await axios.post("/users/getUser", { email }, OPTIONS);
+  return response;
 };
 
 export const setNewMatch = async (matchData) => {
