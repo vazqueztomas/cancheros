@@ -8,9 +8,9 @@ import SubmitButton from "./components/SubmitButton";
 import CancelButton from "./components/CancelButton";
 import Label from "./components/Label";
 import DateInput from "./components/DateInput";
+import Matches from "./Matches";
 
 const MainScreen = () => {
-  const [matches, setMatches] = useState([]);
   const [visibleForm, setVisibleForm] = useState(false);
   const [userMainClub, setUserMainClub] = useState(null);
   const [teams, setTeams] = useState([]);
@@ -20,16 +20,6 @@ const MainScreen = () => {
     email,
     playVersus: "",
     matchDay: "",
-  };
-
-  const getMatches = async () => {
-    try {
-      const response = await getUser(email);
-      setMatches(response.matches);
-      setUserMainClub(response.club);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const getTeam = async () => {
@@ -42,7 +32,6 @@ const MainScreen = () => {
   };
 
   useEffect(() => {
-    getMatches();
     getTeam();
   }, []);
 
@@ -57,28 +46,13 @@ const MainScreen = () => {
   return (
     <Container>
       <LogoutButton />
-      {!visibleForm ? (
-        <MatchContainer>
-          {matches
-            ? matches.map((el, ind) => (
-                <MatchCard
-                  key={ind}
-                  clubOne={userMainClub}
-                  clubTwo={el.playVersus}
-                  date={el.matchDay}
-                  teams={teams}
-                />
-              ))
-            : null}
-        </MatchContainer>
-      ) : null}
+      {!visibleForm ? <Matches email={email} teams={teams} /> : null}
 
       {visibleForm ? (
         <Formik
           initialValues={initialValues}
           onSubmit={async (values) => {
             await setMatch(values);
-            await getMatches();
             setVisibleForm(!visibleForm);
           }}
         >
@@ -128,14 +102,6 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #01010110;
-`;
-
-const MatchContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 24px;
-  gap: 8px;
 `;
 
 export default MainScreen;
