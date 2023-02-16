@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { myContext } from "../context/AuthProvider";
 import { SecondButton } from "./components/styles";
 import background from "./assets/background.png";
+import Label from "./components/Label";
 
 const initialValues = {
   email: "",
@@ -44,18 +45,18 @@ const Login = () => {
       >
         {() => (
           <Form>
-            <Label>
-              <label htmlFor="email">Email</label>
+            <Column>
+              <Label htmlFor="email" content="Email" />
               <Field type="email" name="email" />
               <ErrorMessage name="email" component="div" />
-            </Label>
+            </Column>
 
-            <Label>
-              <label htmlFor="password">Contraseña</label>
+            <Column>
+              <Label htmlFor="password" content="Email" />
               <Field type="password" name="password" />
               <ErrorMessage name="password" component="div" />
               <button type="submit">Ingresar</button>
-            </Label>
+            </Column>
           </Form>
         )}
       </Formik>
@@ -77,7 +78,7 @@ const Container = styled.div`
   height: 90vh;
   background: url(${background}) 4% 52%;
 `;
-const Label = styled.div`
+const Column = styled.div`
   display: flex;
   flex-direction: column;
 `;

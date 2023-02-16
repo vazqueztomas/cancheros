@@ -50,7 +50,6 @@ const MainScreen = () => {
         <Formik
           initialValues={initialValues}
           onSubmit={async (values) => {
-            console.log(values);
             await setMatch(values);
             setVisibleForm(!visibleForm);
           }}

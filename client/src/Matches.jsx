@@ -10,13 +10,10 @@ const Matches = ({ email, teams }) => {
   const getMatch = async (data) => {
     try {
       const response = await getUser(data);
-      console.log(response);
       setMatches(response.matches);
       setUserMainClub(response.club);
     } catch (error) {}
   };
-
-  console.log(matches);
 
   useEffect(() => {
     getMatch(email);
