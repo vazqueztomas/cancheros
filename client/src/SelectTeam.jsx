@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { getTeams, handleNewClub, getUser } from "../services/services";
 import Team from "./Team";
 import { useNavigate } from "react-router-dom";
-import { myContext } from "../context/AuthProvider";
 
 const SelectTeam = () => {
-  const { auth } = myContext();
   const [teamSelected, setTeamSelected] = useState("");
   const [teams, setTeams] = useState([]);
   const navigate = useNavigate();
@@ -24,7 +22,7 @@ const SelectTeam = () => {
   const getClubUser = async () => {
     try {
       const user = await getUser(email);
-      user.data.club ? navigate("/mainscreen") : null;
+      user.club ? navigate("/mainscreen") : null;
     } catch (error) {
       console.error(error);
     }

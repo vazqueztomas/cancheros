@@ -1,5 +1,6 @@
 import React from "react";
 import { Field } from "formik";
+import Label from "./Label";
 
 const inputDate = (props) => <input type="date" {...props} />;
 

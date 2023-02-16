@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Field, Form, Formik } from "formik";
 import { getUser, setNewMatch, getTeams } from "../services/services";
-import { myContext } from "../context/AuthProvider";
 import MatchCard from "./MatchCard";
 import LogoutButton from "./LogoutButton";
 import SubmitButton from "./components/SubmitButton";
 import CancelButton from "./components/CancelButton";
+import Label from "./components/Label";
+import DateInput from "./components/DateInput";
 
 const MainScreen = () => {
-  const { auth } = myContext();
   const [matches, setMatches] = useState([]);
   const [visibleForm, setVisibleForm] = useState(false);
   const [userMainClub, setUserMainClub] = useState(null);
@@ -25,6 +25,7 @@ const MainScreen = () => {
   const getMatches = async () => {
     try {
       const response = await getUser(email);
+      // console.log(response.club);
       setMatches(response.matches);
       setUserMainClub(response.club);
     } catch (error) {
@@ -58,15 +59,7 @@ const MainScreen = () => {
     <Container>
       <LogoutButton />
       {!visibleForm ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            padding: "24px",
-            gap: "8px",
-          }}
-        >
+        <MatchContainer>
           {matches
             ? matches.map((el, ind) => (
                 <MatchCard
@@ -78,7 +71,7 @@ const MainScreen = () => {
                 />
               ))
             : null}
-        </div>
+        </MatchContainer>
       ) : null}
 
       {visibleForm ? (
@@ -136,6 +129,14 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #01010110;
+`;
+
+const MatchContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px;
+  gap: 8px;
 `;
 
 export default MainScreen;
