@@ -38,7 +38,6 @@ export const handleNewClub = async (userData) => {
 };
 
 export const getUser = async (email) => {
-  console.log(email, "desde servicio");
   const response = await axios.post("/users/getUser", { email }, OPTIONS);
   return response;
 };

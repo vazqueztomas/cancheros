@@ -5,8 +5,8 @@ import { getUser, setNewMatch, getTeams } from "../services/services";
 import { myContext } from "../context/AuthProvider";
 import MatchCard from "./MatchCard";
 import LogoutButton from "./LogoutButton";
-
-const inputDate = (props) => <input type="date" {...props} />;
+import SubmitButton from "./components/SubmitButton";
+import CancelButton from "./components/CancelButton";
 
 const MainScreen = () => {
   const { auth } = myContext();
@@ -54,8 +54,6 @@ const MainScreen = () => {
     }
   };
 
-  console.log(teams);
-
   return (
     <Container>
       <LogoutButton />
@@ -100,24 +98,16 @@ const MainScreen = () => {
                 padding: "16px",
               }}
             >
-              <label>Contra quién jugó tu equipo?</label>
+              <Label content="Contra quién jugó tu equipo ?" />
               <Field as="select" name="playVersus">
                 {teams.map((el, ind) => (
                   <option key={ind}>{el.strTeam}</option>
                 ))}
               </Field>
-
-              <label htmlFor="matchDay">En que fecha?</label>
-              <Field as={inputDate} name="matchDay" />
-
+              <DateInput />
               <Botonera>
-                <button type="submit">Cargar partido</button>
-                <CancelButton
-                  type="button"
-                  onClick={() => setVisibleForm(!visibleForm)}
-                >
-                  Cancelar
-                </CancelButton>
+                <SubmitButton content="Cargar partido" />
+                <CancelButton onClick={() => setVisibleForm(!visibleForm)} />
               </Botonera>
             </Form>
           )}
@@ -146,12 +136,6 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #01010110;
-`;
-
-const CancelButton = styled.button`
-  border: 1px solid #2f2f2f;
-  background-color: transparent;
-  color: white;
 `;
 
 export default MainScreen;
