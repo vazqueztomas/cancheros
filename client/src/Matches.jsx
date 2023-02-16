@@ -20,7 +20,7 @@ const Matches = ({ email, teams }) => {
 
   useEffect(() => {
     getMatch(email);
-  });
+  }, []);
 
   return (
     <MatchContainer>

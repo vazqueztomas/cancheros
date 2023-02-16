@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Field, Form, Formik } from "formik";
-import { getUser, setNewMatch, getTeams } from "../services/services";
-import MatchCard from "./MatchCard";
+import { setNewMatch, getTeams } from "../services/services";
 import LogoutButton from "./LogoutButton";
 import SubmitButton from "./components/SubmitButton";
 import CancelButton from "./components/CancelButton";
@@ -12,7 +11,6 @@ import Matches from "./Matches";
 
 const MainScreen = () => {
   const [visibleForm, setVisibleForm] = useState(false);
-  const [userMainClub, setUserMainClub] = useState(null);
   const [teams, setTeams] = useState([]);
   const email = localStorage.getItem("email");
 
@@ -52,11 +50,12 @@ const MainScreen = () => {
         <Formik
           initialValues={initialValues}
           onSubmit={async (values) => {
+            console.log(values);
             await setMatch(values);
             setVisibleForm(!visibleForm);
           }}
         >
-          {() => (
+          {(values) => (
             <Form
               style={{
                 display: "flex",
