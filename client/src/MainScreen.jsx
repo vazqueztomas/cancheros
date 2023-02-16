@@ -25,7 +25,6 @@ const MainScreen = () => {
   const getMatches = async () => {
     try {
       const response = await getUser(email);
-      // console.log(response.club);
       setMatches(response.matches);
       setUserMainClub(response.club);
     } catch (error) {
