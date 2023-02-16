@@ -7,7 +7,7 @@ const OPTIONS = {
 
 export function setupServices() {
   const devUriBase = "http://localhost:8080";
-  const prodUriBase = "https://cancheros.onrender.com";
+  const prodUriBase = "cancheros-production.up.railway.app";
   let getBaseUri = () =>
     window.location.host.includes("localhost") ||
     window.location.host.includes("127.0.0.1")
