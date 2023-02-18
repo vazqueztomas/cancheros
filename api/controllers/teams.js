@@ -30,8 +30,10 @@ const deleteMatch = async (req, res) => {
     const { email, id } = req.body;
     const user = await User.findOne({ email });
     let matches = user.matches;
-    matches = matches.filter((el) => id == el._id.toString());
-    console.log(matches);
+    let matchToDelete = matches.filter((el) => id !== el._id.toString());
+    matches = [...matchToDelete];
+    await user.save();
+    return res.status(200).json(matches);
   } catch (error) {
     console.error(error);
     return res.json(error);
