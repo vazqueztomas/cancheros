@@ -27,8 +27,11 @@ const getTeams = async (req, res) => {
 
 const deleteMatch = async (req, res) => {
   try {
-    const { data } = req.body;
-    console.log(data);
+    const { email, id } = req.body;
+    const user = await User.findOne({ email });
+    let matches = user.matches;
+    matches = matches.filter((el) => id == el._id.toString());
+    console.log(matches);
   } catch (error) {
     console.error(error);
     return res.json(error);
