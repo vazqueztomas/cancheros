@@ -25,4 +25,14 @@ const getTeams = async (req, res) => {
   }
 };
 
-module.exports = { handleNewClub, getTeams };
+const deleteMatch = async (req, res) => {
+  try {
+    const { data } = req.body;
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+    return res.json(error);
+  }
+};
+
+module.exports = { handleNewClub, getTeams, deleteMatch };
