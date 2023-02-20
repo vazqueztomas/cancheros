@@ -1,10 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { deleteMatch } from "../services/services";
+import ButtonDelete from "./components/ButtonDelete";
 
 const MatchCard = ({ clubOne, clubTwo, date, teams }) => {
   const dateParsed = date.toString().slice(0, 10);
   const secondClubName = teams.filter((x) => x.strTeam === clubTwo);
   const firstClubName = teams.filter((x) => x.strTeam === clubOne);
+
+  const handleDeleteMatch = async () => {
+    await deleteMatch();
+  };
 
   return (
     <Container>
@@ -32,6 +38,7 @@ const MatchCard = ({ clubOne, clubTwo, date, teams }) => {
           </Column>
         </div>
       </Column>
+      <ButtonDelete onClick={handleDeleteMatch} />
     </Container>
   );
 };
