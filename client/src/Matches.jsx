@@ -23,6 +23,7 @@ const Matches = ({ email, teams }) => {
       {matches
         ? matches.map((el, ind) => (
             <MatchCard
+              setMatches={setMatches}
               key={ind}
               clubOne={userMainClub}
               clubTwo={el.playVersus}

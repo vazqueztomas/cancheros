@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { deleteMatch } from "../services/services";
 import ButtonDelete from "./components/ButtonDelete";
 
-const MatchCard = ({ clubOne, clubTwo, date, teams, id }) => {
+const MatchCard = ({ setMatches, clubOne, clubTwo, date, teams, id }) => {
   const dateParsed = date.toString().slice(0, 10);
   const secondClubName = teams.filter((x) => x.strTeam === clubTwo);
   const firstClubName = teams.filter((x) => x.strTeam === clubOne);
@@ -13,7 +13,8 @@ const MatchCard = ({ clubOne, clubTwo, date, teams, id }) => {
       email: localStorage.getItem("email"),
       id,
     };
-    await deleteMatch(data);
+    const response = await deleteMatch(data);
+    setMatches(response);
   };
 
   return (
