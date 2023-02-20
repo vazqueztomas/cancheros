@@ -3,7 +3,6 @@ import React from "react";
 import { userSignUp } from "../services/services";
 import { useNavigate } from "react-router-dom";
 import Label from "./components/Label";
-import styled from "styled-components";
 
 const initialValues = {
   firstname: "",

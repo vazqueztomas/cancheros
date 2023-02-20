@@ -6,7 +6,6 @@ import MatchCard from "./MatchCard";
 const Matches = ({ email, teams }) => {
   const [matches, setMatches] = useState([]);
   const [userMainClub, setUserMainClub] = useState();
-
   const getMatch = async (data) => {
     try {
       const response = await getUser(data);
@@ -29,6 +28,7 @@ const Matches = ({ email, teams }) => {
               clubTwo={el.playVersus}
               date={el.matchDay}
               teams={teams}
+              id={el._id}
             />
           ))
         : null}

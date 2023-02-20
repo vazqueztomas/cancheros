@@ -25,4 +25,19 @@ const getTeams = async (req, res) => {
   }
 };
 
-module.exports = { handleNewClub, getTeams };
+const deleteMatch = async (req, res) => {
+  try {
+    const { email, id } = req.body;
+    const user = await User.findOne({ email });
+    let matches = user.matches;
+    let matchToDelete = matches.filter((el) => id !== el._id.toString());
+    matches = [...matchToDelete];
+    await user.save();
+    return res.status(200).json(matches);
+  } catch (error) {
+    console.error(error);
+    return res.json(error);
+  }
+};
+
+module.exports = { handleNewClub, getTeams, deleteMatch };
