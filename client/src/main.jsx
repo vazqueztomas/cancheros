@@ -13,18 +13,20 @@ import PersistLogin from "./components/PersistLogin";
 import "./index.css";
 import Login from "./Login";
 import MainScreen from "./MainScreen";
+import LoginSuccesfull from "./pages/LoginSuccesfull";
+import NotFound from "./pages/PageNotFound";
 import RequireAuth from "./RequireAuth";
 import SelectTeam from "./SelectTeam";
 import Signup from "./Signup";
-import Successfull from "./Successfull";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />} />
+      <Route path="*" element={<NotFound />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/successfull" element={<Successfull />} />
+      <Route path="/successfull" element={<LoginSuccesfull />} />
       <Route element={<RequireAuth />}>
         <Route element={<PersistLogin />}>
           <Route path="/select-team" element={<SelectTeam />} />

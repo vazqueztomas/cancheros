@@ -44,7 +44,14 @@ const Login = () => {
         }}
       >
         {() => (
-          <Form>
+          <Form
+            style={{
+              display: "flex",
+              gap: "12px",
+              flexDirection: "column",
+              width: "70%",
+            }}
+          >
             <Column>
               <Label htmlFor="email" content="Email" />
               <Field type="email" name="email" />
@@ -52,7 +59,7 @@ const Login = () => {
             </Column>
 
             <Column>
-              <Label htmlFor="password" content="Email" />
+              <Label htmlFor="password" content="Password" />
               <Field type="password" name="password" />
               <ErrorMessage name="password" component="div" />
               <button type="submit">Ingresar</button>
@@ -70,17 +77,18 @@ const Login = () => {
   );
 };
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: end;
-  height: 90vh;
+  height: 100vh;
   background: url(${background}) 4% 52%;
 `;
 const Column = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 export default Login;
