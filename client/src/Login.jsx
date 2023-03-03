@@ -38,7 +38,17 @@ const Login = () => {
     <Container>
       <Formik
         initialValues={initialValues}
-        validate={(values) => {}}
+        validate={(values) => {
+          let errors = {};
+          if (!values.email) {
+            errors.email = "Completa tu email";
+          }
+
+          if (!values.password) {
+            errors.password = "Completa tu contraseña";
+          }
+          return errors;
+        }}
         onSubmit={async (valores) => {
           await handleLogin(valores);
         }}

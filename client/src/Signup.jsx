@@ -19,7 +19,7 @@ const Signup = () => {
 
   const onSignUp = async (userData) => {
     try {
-      const response = await userSignUp(userData);
+      await userSignUp(userData);
       navigate("/successfull");
     } catch (e) {
       console.error(e);
@@ -31,8 +31,26 @@ const Signup = () => {
       <EscudoAfa />
       <Formik
         initialValues={initialValues}
-        validate={() => {
+        validate={(values) => {
           let errores = {};
+          if (!values.firstname) {
+            errores.firstname = "Este campo es obligatorio";
+          }
+          if (!values.lastname) {
+            errores.lastname = "Este campo es obligatorio";
+          }
+          if (!values.email) {
+            errores.email = "Este campo es obligatorio";
+          }
+          if (!values.password) {
+            errores.password = "Este campo es obligatorio";
+          }
+          if (!values.rePassword) {
+            errores.rePassword = "Este campo es obligatorio";
+          }
+          if (values.password !== values.rePassword) {
+            errores.rePassword = "Las contraseñas no coinciden";
+          }
           return errores;
         }}
         onSubmit={(values) => {
@@ -50,7 +68,7 @@ const Signup = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              padding: "2em 0",
+              padding: "1em 0",
               gap: "8px",
               justifyContent: "center",
               width: "70%",
@@ -124,5 +142,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 5%;
 `;
 export default Signup;
