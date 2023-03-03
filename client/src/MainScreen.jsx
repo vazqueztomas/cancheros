@@ -49,6 +49,10 @@ const MainScreen = () => {
       {visibleForm ? (
         <Formik
           initialValues={initialValues}
+          validate={(values) => {
+            let errors = {};
+            console.log(values);
+          }}
           onSubmit={async (values) => {
             await setMatch(values);
             setVisibleForm(!visibleForm);
@@ -64,13 +68,20 @@ const MainScreen = () => {
             >
               <Label content="Contra quién jugó tu equipo ?" />
               <Field as="select" name="playVersus">
+                <option value="">Selecciona tu equipo</option>
                 {teams.map((el, ind) => (
                   <option key={ind}>{el.strTeam}</option>
                 ))}
               </Field>
               <DateInput />
               <Botonera>
-                <SubmitButton content="Cargar partido" />
+                <SubmitButton
+                  content="Cargar partido"
+                  disabled={
+                    values.values.playVersus == "" ||
+                    values.values.matchDay == ""
+                  }
+                />
                 <CancelButton onClick={() => setVisibleForm(!visibleForm)} />
               </Botonera>
             </Form>

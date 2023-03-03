@@ -31,7 +31,7 @@ const deleteMatch = async (req, res) => {
     const user = await User.findOne({ email });
     let matches = user.matches;
     let matchToDelete = matches.filter((el) => id !== el._id.toString());
-    matches = [...matchToDelete];
+    user.matches = [...matchToDelete];
     await user.save();
     return res.status(200).json(matches);
   } catch (error) {
