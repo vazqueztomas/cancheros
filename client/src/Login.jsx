@@ -15,7 +15,7 @@ const initialValues = {
 const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState();
-  const { auth, setAuth, setPersist } = myContext();
+  const { setAuth, setPersist } = myContext();
 
   const handleLogin = async (user) => {
     try {

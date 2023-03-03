@@ -6,6 +6,8 @@ import MatchCard from "./MatchCard";
 const Matches = ({ email, teams }) => {
   const [matches, setMatches] = useState([]);
   const [userMainClub, setUserMainClub] = useState();
+  const [userChangeMatches, setUserChangeMatches] = useState([]);
+
   const getMatch = async (data) => {
     try {
       const response = await getUser(data);
@@ -18,12 +20,17 @@ const Matches = ({ email, teams }) => {
     getMatch(email);
   }, []);
 
+  // if the user delete match, this useEffect will run
+  useEffect(() => {
+    getMatch(email);
+  }, [userChangeMatches]);
+
   return (
     <MatchContainer>
       {matches
         ? matches.map((el, ind) => (
             <MatchCard
-              setMatches={setMatches}
+              setUserChangeMatches={setUserChangeMatches}
               key={ind}
               clubOne={userMainClub}
               clubTwo={el.playVersus}

@@ -2,7 +2,11 @@ import React from "react";
 
 const SubmitButton = (props) => {
   return (
-    <button onClick={() => props.onClick} type="submit">
+    <button
+      onClick={() => props.onClick}
+      type="submit"
+      disabled={props.disabled}
+    >
       {props.content}
     </button>
   );
