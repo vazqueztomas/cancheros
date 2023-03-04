@@ -13,7 +13,7 @@ const getUser = async (req, res) => {
 
 const setNewMatch = async (req, res) => {
   try {
-    const { email, playVersus, matchDay } = req.body;
+    const { email, playVersus, matchDay, result } = req.body;
     const user = await User.findOne({ email });
     if (!user) return res.json("Usuario no encontrado");
     const match = {
