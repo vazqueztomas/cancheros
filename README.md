@@ -24,20 +24,44 @@ Please make sure to update tests as appropriate.
 
 <hr>
 
+
 ## Documentación
 <h6>Spanish</h6>
 
 Cancheros es una aplicación web realizada en React + NodeJS (con Express y MongoDB).
 Dentro de la aplicación podrás elegir tu equipo de futbol y llevar una lista de los partidos a los que hayas podido ir, como si fuera un historial.
 
-La aplicación utiliza tecnologías como React, NodeJS, MongoDB y Express. Para los estilos utilicé styled-components.
-Para la api se utiliza <b><i>'Render'</i></b> como hosting.
+La aplicación utiliza tecnologías como React, NodeJS, MongoDB y Express. Para los estilos se utiliza styled-components.
+Para la api se utiliza <b><i>'Railway'</i></b> como hosting.
 
 The application is made with React, NodeJS, Mongo (db) and Express. For the styles I used styled-components.
-The API is hosted in <b><i>'Render'.</i></b>
+The API is hosted in <b><i>'Railway'.</i></b>
 
 El cliente utiliza un JSON con el nombre de los clubes, sus escudos y (próximamente) sus camisetas.
 La API y todas sus funciones fueron creadas desde cero para una mejor funcionalidad del sistema.
+
+## Previews
+
+Dentro de la aplicación podrás:
+<ul>
+<li> Crear una cuenta con tu email, para guardar todos los datos de tu historial.<br>
+<img width="369" alt="Captura de pantalla 2023-03-09 a la(s) 16 21 25" src="https://user-images.githubusercontent.com/78186062/224132231-a1725a27-9dea-4807-9a12-c29b8cb1fc55.png">
+</li>
+
+<li>
+Elegir tu equipo.<br>
+<img width="334" alt="Captura de pantalla 2023-03-09 a la(s) 16 23 15" src="https://user-images.githubusercontent.com/78186062/224132743-7ba234a8-0e13-4e66-afe0-003edf1716a2.png">
+</li>
+
+<li>
+Guardar los datos de tus partidos, con el resultado exacto para recordarlo con lujo de detalles.
+<img width="338" alt="Captura de pantalla 2023-03-09 a la(s) 16 13 22" src="https://user-images.githubusercontent.com/78186062/224131393-763dc98a-84a0-49e3-aafb-ed0e7d19f487.png">
+</li>
+
+</u>
+
+
+
 
 ## Contribución
 
