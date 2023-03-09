@@ -1,24 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Field, Form, Formik } from "formik";
-import { setNewMatch, getTeams } from "../services/services";
+import { getTeams } from "../services/services";
 import LogoutButton from "./LogoutButton";
-import SubmitButton from "./components/SubmitButton";
-import CancelButton from "./components/CancelButton";
-import Label from "./components/Label";
-import DateInput from "./components/DateInput";
 import Matches from "./Matches";
+import FormNewMatch from "./components/FormNewMatch";
 
 const MainScreen = () => {
   const [visibleForm, setVisibleForm] = useState(false);
   const [teams, setTeams] = useState([]);
   const email = localStorage.getItem("email");
-
-  const initialValues = {
-    email,
-    playVersus: "",
-    matchDay: "",
-  };
 
   const getTeam = async () => {
     try {
@@ -33,60 +23,17 @@ const MainScreen = () => {
     getTeam();
   }, []);
 
-  const setMatch = async (matchData) => {
-    try {
-      const response = await setNewMatch(matchData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <Container>
       <LogoutButton />
       {!visibleForm ? <Matches email={email} teams={teams} /> : null}
 
       {visibleForm ? (
-        <Formik
-          initialValues={initialValues}
-          validate={(values) => {
-            let errors = {};
-            console.log(values);
-          }}
-          onSubmit={async (values) => {
-            await setMatch(values);
-            setVisibleForm(!visibleForm);
-          }}
-        >
-          {(values) => (
-            <Form
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                padding: "16px",
-              }}
-            >
-              <Label content="Contra quién jugó tu equipo ?" />
-              <Field as="select" name="playVersus">
-                <option value="">Selecciona tu equipo</option>
-                {teams.map((el, ind) => (
-                  <option key={ind}>{el.strTeam}</option>
-                ))}
-              </Field>
-              <DateInput />
-              <Botonera>
-                <SubmitButton
-                  content="Cargar partido"
-                  disabled={
-                    values.values.playVersus == "" ||
-                    values.values.matchDay == ""
-                  }
-                />
-                <CancelButton onClick={() => setVisibleForm(!visibleForm)} />
-              </Botonera>
-            </Form>
-          )}
-        </Formik>
+        <FormNewMatch
+          teams={teams}
+          setVisibleForm={setVisibleForm}
+          visibleForm={visibleForm}
+        />
       ) : null}
       {!visibleForm && (
         <button onClick={() => setVisibleForm(!visibleForm)}>
@@ -96,12 +43,6 @@ const MainScreen = () => {
     </Container>
   );
 };
-
-const Botonera = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 16px;
-`;
 
 const Container = styled.div`
   display: flex;

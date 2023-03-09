@@ -5,7 +5,7 @@ const userSchema = new DB.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   club: { type: String },
-  matches: [{ playVersus: String, matchDay: Date }],
+  matches: [{ playVersus: String, matchDay: Date, result: [] }],
 });
 
 module.exports = DB.model("User", userSchema);

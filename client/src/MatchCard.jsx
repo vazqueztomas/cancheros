@@ -10,6 +10,7 @@ const MatchCard = ({
   date,
   teams,
   id,
+  result,
 }) => {
   const dateParsed = date.toString().slice(0, 10);
   const secondClubName = teams.filter((x) => x.strTeam === clubTwo);
@@ -42,11 +43,13 @@ const MatchCard = ({
           <Column>
             <ImgClub src={firstClubName[0].strTeamBadge}></ImgClub>
             <h6>{clubOne}</h6>
+            <h4>{result[0]}</h4>
           </Column>
           <p>:</p>
           <Column>
             <ImgClub src={secondClubName[0].strTeamBadge}></ImgClub>
             <h6>{clubTwo}</h6>
+            <h4>{result[1]}</h4>
           </Column>
         </div>
       </Column>

@@ -19,6 +19,7 @@ const setNewMatch = async (req, res) => {
     const match = {
       playVersus,
       matchDay,
+      result,
     };
     const newMatch = await User.updateOne(user, { $push: { matches: match } });
     res.status(200).json(newMatch);

@@ -25,6 +25,7 @@ const Matches = ({ email, teams }) => {
     getMatch(email);
   }, [userChangeMatches]);
 
+  console.log(matches);
   return (
     <MatchContainer>
       {matches
@@ -37,6 +38,7 @@ const Matches = ({ email, teams }) => {
               date={el.matchDay}
               teams={teams}
               id={el._id}
+              result={el.result}
             />
           ))
         : null}
