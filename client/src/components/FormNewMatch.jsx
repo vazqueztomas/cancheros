@@ -6,6 +6,7 @@ import { setNewMatch } from "../../services/services";
 import DateInput from "./DateInput";
 import CancelButton from "./CancelButton";
 import SubmitButton from "./SubmitButton";
+import GoalsInput from "./GoalsInput";
 
 const initialValues = {
   email: localStorage.getItem("email"),
@@ -14,7 +15,7 @@ const initialValues = {
   result: [],
 };
 
-const FormNewMatch = ({ teams, setVisibleForm, visibleForm }) => {
+const FormNewMatch = ({ teams, setVisibleForm, visibleForm, user }) => {
   const setMatch = async (matchData) => {
     try {
       await setNewMatch(matchData);
@@ -22,7 +23,7 @@ const FormNewMatch = ({ teams, setVisibleForm, visibleForm }) => {
       console.log(error);
     }
   };
-
+  console.log(user);
   return (
     <Formik
       initialValues={initialValues}
@@ -45,7 +46,7 @@ const FormNewMatch = ({ teams, setVisibleForm, visibleForm }) => {
         >
           <Label content="Contra quién jugó tu equipo ?" />
           <Field as="select" name="playVersus">
-            <option value="">Selecciona tu equipo</option>
+            <option value="">Selecciona el equipo</option>
             {teams.map((el, ind) => (
               <option key={ind}>{el.strTeam}</option>
             ))}
@@ -60,8 +61,32 @@ const FormNewMatch = ({ teams, setVisibleForm, visibleForm }) => {
                 justifyContent: "space-around",
               }}
             >
-              <Field type="number" name="result[0]" />
-              <Field type="number" name="result[1]" />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <GoalsInput name="result[0]" />
+                <p>{user.club}</p>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <GoalsInput name="result[1]" />
+                <p>
+                  {values.values.playVersus
+                    ? values.values.playVersus
+                    : "Selecciona contrario"}
+                </p>
+              </div>
             </div>
           </Botonera>
 
@@ -69,7 +94,10 @@ const FormNewMatch = ({ teams, setVisibleForm, visibleForm }) => {
             <SubmitButton
               content="Cargar partido"
               disabled={
-                values.values.playVersus == "" || values.values.matchDay == ""
+                values.values.playVersus == "" ||
+                values.values.matchDay == "" ||
+                values.values.result[0] ||
+                values.values.result[1]
               }
             />
             <CancelButton onClick={() => setVisibleForm(!visibleForm)} />

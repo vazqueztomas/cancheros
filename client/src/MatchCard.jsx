@@ -43,13 +43,13 @@ const MatchCard = ({
           <Column>
             <ImgClub src={firstClubName[0].strTeamBadge}></ImgClub>
             <h6>{clubOne}</h6>
-            <h4>{result[0]}</h4>
+            <Result>{result[0]}</Result>
           </Column>
           <p>:</p>
           <Column>
             <ImgClub src={secondClubName[0].strTeamBadge}></ImgClub>
             <h6>{clubTwo}</h6>
-            <h4>{result[1]}</h4>
+            <Result>{result[1]}</Result>
           </Column>
         </div>
       </Column>
@@ -86,6 +86,13 @@ const Column = styled.div`
   :nth-child(2) {
     text-align: center;
   }
+`;
+
+const Result = styled.p`
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
 `;
 
 export default MatchCard;
