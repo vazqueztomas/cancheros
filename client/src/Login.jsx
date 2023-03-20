@@ -14,7 +14,6 @@ const initialValues = {
 };
 const Login = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState();
   const { setAuth, setPersist } = myContext();
 
   const handleLogin = async (user) => {
@@ -38,7 +37,15 @@ const Login = () => {
     <Container>
       <Formik
         initialValues={initialValues}
-        validate={(values) => {}}
+        validate={(values) => {
+          let errors = {};
+          if (!values.email) {
+            errors.email = "Completa tu email";
+          }
+          if (!values.password) {
+            errors.password = "Completa tu contraseña";
+          }
+        }}
         onSubmit={async (valores) => {
           await handleLogin(valores);
         }}
@@ -67,9 +74,6 @@ const Login = () => {
           </Form>
         )}
       </Formik>
-      {error == 401 ? (
-        <h4 style={{ color: "red" }}>Email o contraseña inválidos.</h4>
-      ) : null}
       <SecondButton onClick={() => navigate("/signup")}>
         Aun no tienes cuenta?
       </SecondButton>
