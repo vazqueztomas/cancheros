@@ -5,7 +5,6 @@ import { userLogin } from "../services/services";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../context/AuthProvider";
 import { SecondButton } from "./components/styles";
-import background from "./assets/background.png";
 import Label from "./components/Label";
 
 const initialValues = {
@@ -35,6 +34,10 @@ const Login = () => {
 
   return (
     <Container>
+      <div style={{ textAlign: "center" }}>
+        <h1>Cancheros</h1>
+        <p>El historial de tus partidos</p>
+      </div>
       <Formik
         initialValues={initialValues}
         validate={(values) => {
@@ -87,7 +90,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: end;
   height: 100vh;
-  background: url(${background}) 4% 52%;
+  gap: 32px;
 `;
 const Column = styled.div`
   display: flex;
