@@ -8,7 +8,7 @@ const Matches = ({ email, teams }) => {
   const [userMainClub, setUserMainClub] = useState();
   const [userChangeMatches, setUserChangeMatches] = useState([]);
 
-  const getMatch = async (data) => {
+  const getMatch = async data => {
     try {
       const response = await getUser(data);
       setMatches(response.matches);
@@ -27,20 +27,22 @@ const Matches = ({ email, teams }) => {
 
   return (
     <MatchContainer>
-      {matches
-        ? matches.map((el, ind) => (
-            <MatchCard
-              setUserChangeMatches={setUserChangeMatches}
-              key={ind}
-              clubOne={userMainClub}
-              clubTwo={el.playVersus}
-              date={el.matchDay}
-              teams={teams}
-              id={el._id}
-              result={el.result}
-            />
-          ))
-        : null}
+      {matches.length > 0 ? (
+        matches.map((el, ind) => (
+          <MatchCard
+            setUserChangeMatches={setUserChangeMatches}
+            key={ind}
+            clubOne={userMainClub}
+            clubTwo={el.playVersus}
+            date={el.matchDay}
+            teams={teams}
+            id={el._id}
+            result={el.result}
+          />
+        ))
+      ) : (
+        <h3>No cargaste ningun partido</h3>
+      )}
     </MatchContainer>
   );
 };

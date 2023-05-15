@@ -5,12 +5,14 @@ import styled from "styled-components";
 
 const LoginSuccesfull = () => {
   return (
-    <Container>
+    <section class="bg-gray-800 text-white flex flex-col w-screen h-screen items-center justify-center text-center gap-2 px-4">
       <EscudoAfa />
-      <h1>Gracias por ser parte de Cancheros!</h1>
+      <h1 class="text-3xl">Gracias por ser parte de Cancheros!</h1>
       <p>Te esperamos para que puedas anotar todos tus partidos.</p>
-      <Link to="/login">Ingresa a tu cuenta acá</Link>
-    </Container>
+      <Link to="/login" class="text-violet-400">
+        Ingresa a tu cuenta acá
+      </Link>
+    </section>
   );
 };
 

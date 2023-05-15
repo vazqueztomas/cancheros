@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Label from "./components/Label";
 import EscudoAfa from "./components/EscudoAfa";
 import styled from "styled-components";
+import Button from "./components/Button";
 
 const initialValues = {
   firstname: "",
@@ -17,9 +18,9 @@ const initialValues = {
 const Signup = () => {
   const navigate = useNavigate();
 
-  const onSignUp = async (userData) => {
+  const onSignUp = async userData => {
     try {
-      const response = await userSignUp(userData);
+      await userSignUp(userData);
       navigate("/successfull");
     } catch (e) {
       console.error(e);
@@ -27,7 +28,7 @@ const Signup = () => {
   };
 
   return (
-    <Container>
+    <section class="w-screen h-screen bg-gray-800 text-white flex flex-col justify-center items-center">
       <EscudoAfa />
       <Formik
         initialValues={initialValues}
@@ -35,38 +36,37 @@ const Signup = () => {
           let errores = {};
           return errores;
         }}
-        onSubmit={(values) => {
+        onSubmit={values => {
           let data = {
             name: values.firstname + " " + values.lastname,
             email: values.email,
             password: values.password,
           };
           onSignUp(data);
-        }}
-      >
+        }}>
         {() => (
           <Form
             autoComplete="off"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "2em 0",
-              gap: "8px",
-              justifyContent: "center",
-              width: "70%",
-            }}
-          >
+            class="w-[100%] max-w-[320px] flex flex-col justify-center gap-2">
             <Label htmlFor="firstname" content="Nombre" />
-            <Field name="firstname" placeholder="Lionel Andrés" />
+            <Field
+              name="firstname"
+              placeholder="Lionel Andrés"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500"
+            />
 
             <ErrorMessage name="firstname" aria-live="assertive">
-              {(msg) => <ErrorText>{msg}</ErrorText>}
+              {msg => <ErrorText>{msg}</ErrorText>}
             </ErrorMessage>
 
             <Label htmlFor="lastname" content="Apellido" />
-            <Field name="lastname" placeholder="Messi" />
+            <Field
+              name="lastname"
+              placeholder="Messi"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500"
+            />
             <ErrorMessage name="lastname" aria-live="assertive">
-              {(msg) => <ErrorText>{msg}</ErrorText>}
+              {msg => <ErrorText>{msg}</ErrorText>}
             </ErrorMessage>
             <Label htmlFor="email" content="Mail" />
             <Field
@@ -74,9 +74,10 @@ const Signup = () => {
               name="email"
               placeholder="email@email.com"
               aria-describedby="explicacionmail"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500"
             />
             <ErrorMessage name="email" aria-live="assertive">
-              {(msg) => <ErrorText>{msg}</ErrorText>}
+              {msg => <ErrorText>{msg}</ErrorText>}
             </ErrorMessage>
             <Label htmlFor="password" content="Contraseña" />
             <Field
@@ -85,9 +86,10 @@ const Signup = () => {
               type="password"
               placeholder="Contraseña"
               aria-describedby="explicacionpassword"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500"
             />
             <ErrorMessage name="password" aria-live="assertive">
-              {(msg) => <ErrorText>{msg}</ErrorText>}
+              {msg => <ErrorText>{msg}</ErrorText>}
             </ErrorMessage>
 
             <Label htmlFor="rePassword" content="Repetir Contraseña" />
@@ -96,33 +98,20 @@ const Signup = () => {
               type="password"
               placeholder="Repetir contraseña"
               aria-describedby="explicacionrepassword"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500"
             />
             <ErrorMessage name="rePassword" aria-live="assertive">
-              {(msg) => <ErrorText>{msg}</ErrorText>}
+              {msg => <ErrorText>{msg}</ErrorText>}
             </ErrorMessage>
-            <div
-              style={{
-                justifyContent: "center",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <button type="submit">Registrarse</button>
+            <div class="flex flex-col items-center gap-2 mt-2">
+              <Button type="submit" func="primary" label="Registrarse" />
               <Link to="/login">Ya tengo cuenta</Link>
             </div>
           </Form>
         )}
       </Formik>
-    </Container>
+    </section>
   );
 };
 
-const Container = styled.div`
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
 export default Signup;

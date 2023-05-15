@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getTeams, handleNewClub, getUser } from "../services/services";
 import Team from "./Team";
 import { useNavigate } from "react-router-dom";
+import Button from "./components/Button";
 
 const SelectTeam = () => {
   const [teamSelected, setTeamSelected] = useState("");
@@ -33,7 +34,7 @@ const SelectTeam = () => {
     getTeam();
   }, []);
 
-  const handleSelected = async (team) => {
+  const handleSelected = async team => {
     const data = {
       email,
       clubName: team,
@@ -47,9 +48,9 @@ const SelectTeam = () => {
   };
 
   return (
-    <Container>
-      <h2 style={{ marginTop: "50px" }}>Elegí tu equipo</h2>
-      <TeamsContainer>
+    <section class="bg-gray-800 flex flex-col justify-center items-center w-screen h-screen px-4 text-white">
+      <h2 class="text-2xl mb-2 font-semibold">Elegí tu equipo</h2>
+      <div class="overflow-scroll max-h-[40%] w-[100%] max-w-[400px] border border-violet-700 p-2 rounded-md">
         {teams.map((el, index) => (
           <Team
             key={index}
@@ -58,18 +59,20 @@ const SelectTeam = () => {
             setTeamSelected={setTeamSelected}
           />
         ))}
-      </TeamsContainer>
+      </div>
       {teamSelected !== "" ? (
-        <Cartel>
+        <div class="flex flex-col mt-4 gap-2">
           <p>
             Elegiste <b>{teamSelected}</b>.
           </p>{" "}
-          <button onClick={() => handleSelected(teamSelected)}>
-            Continuar
-          </button>
-        </Cartel>
+          <Button
+            func="primary"
+            label="Continuar"
+            onClick={() => handleSelected(teamSelected)}
+          />
+        </div>
       ) : null}
-    </Container>
+    </section>
   );
 };
 const Container = styled.div`

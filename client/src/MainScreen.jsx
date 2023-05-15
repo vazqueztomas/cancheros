@@ -4,6 +4,7 @@ import { getTeams, getUser } from "../services/services";
 import LogoutButton from "./LogoutButton";
 import Matches from "./Matches";
 import FormNewMatch from "./components/FormNewMatch";
+import Button from "./components/Button";
 
 const MainScreen = () => {
   const [visibleForm, setVisibleForm] = useState(false);
@@ -32,7 +33,7 @@ const MainScreen = () => {
   }, []);
 
   return (
-    <Container>
+    <section class="bg-gray-800 flex flex-col justify-center items-center text-white w-screen h-screen">
       <LogoutButton />
       {!visibleForm ? <Matches email={email} teams={teams} /> : null}
 
@@ -45,11 +46,13 @@ const MainScreen = () => {
         />
       ) : null}
       {!visibleForm && (
-        <button onClick={() => setVisibleForm(!visibleForm)}>
-          Añadir partido
-        </button>
+        <Button
+          label="Añadir partido"
+          func="primary"
+          onClick={() => setVisibleForm(!visibleForm)}
+        />
       )}
-    </Container>
+    </section>
   );
 };
 
