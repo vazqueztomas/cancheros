@@ -4,7 +4,6 @@ import { Field, Form, Formik } from "formik";
 import Label from "./Label";
 import { setNewMatch } from "../../services/services";
 import DateInput from "./DateInput";
-import CancelButton from "./CancelButton";
 import GoalsInput from "./GoalsInput";
 import Button from "./Button";
 

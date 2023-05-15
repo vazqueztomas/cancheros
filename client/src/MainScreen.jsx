@@ -56,14 +56,4 @@ const MainScreen = () => {
   );
 };
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  backdrop-filter: blur(10px);
-  width: 100vw;
-  height: 100vh;
-  background-color: #01010110;
-`;
-
 export default MainScreen;
