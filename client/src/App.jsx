@@ -1,36 +1,29 @@
 import { useNavigate } from "react-router-dom";
-import { SecondButton } from "./components/styles";
-import styled from "styled-components";
 import "./index.css";
+import Button from "./components/Button";
 
 function App() {
   const navigate = useNavigate();
   return (
-    <Container>
-      <h1 style={{ margin: "0" }}>Cancheros</h1>
-      <p>Tu historial de partidos.</p>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        <button onClick={() => navigate("/login")}>INGRESAR</button>
-        <SecondButton onClick={() => navigate("/signup")}>
-          Registrarse
-        </SecondButton>
-      </div>
-    </Container>
+    <main class=" w-screen h-screen bg-gray-800 text-white flex flex-col justify-center items-center">
+      <header class="text-center">
+        <h1 class="text-4xl">Cancheros</h1>
+        <p>Tu historial de partidos.</p>
+      </header>
+      <section class="flex flex-col w-screen justify-center items-center gap-3 mt-4">
+        <Button
+          label="INGRESAR"
+          onClick={() => navigate("/login")}
+          type="primary"
+        />
+        <Button
+          label="REGISTRARSE"
+          onClick={() => navigate("/signup")}
+          type="secondary"
+        />
+      </section>
+    </main>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`;
 
 export default App;
