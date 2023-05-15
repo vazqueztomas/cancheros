@@ -14,12 +14,12 @@ function App() {
         <Button
           label="INGRESAR"
           onClick={() => navigate("/login")}
-          type="primary"
+          func="primary"
         />
         <Button
           label="REGISTRARSE"
           onClick={() => navigate("/signup")}
-          type="secondary"
+          func="secondary"
         />
       </section>
     </main>
