@@ -13,8 +13,8 @@ const MatchCard = ({
   result,
 }) => {
   const dateParsed = date.toString().slice(0, 10);
-  const secondClubName = teams.filter((x) => x.strTeam === clubTwo);
-  const firstClubName = teams.filter((x) => x.strTeam === clubOne);
+  const secondClubName = teams.filter(x => x.strTeam === clubTwo);
+  const firstClubName = teams.filter(x => x.strTeam === clubOne);
 
   const handleDeleteMatch = async () => {
     let data = {
@@ -25,36 +25,30 @@ const MatchCard = ({
     setUserChangeMatches(response);
   };
 
+  const win = result[0] > result[1];
+  console.log(win);
   return (
-    <Container>
-      <Column>
-        <h6>{dateParsed}</h6>
-      </Column>
-      <Column>
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-around",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Column>
-            <ImgClub src={firstClubName[0].strTeamBadge}></ImgClub>
-            <h6>{clubOne}</h6>
-            <Result>{result[0]}</Result>
-          </Column>
-          <p>:</p>
-          <Column>
-            <ImgClub src={secondClubName[0].strTeamBadge}></ImgClub>
-            <h6>{clubTwo}</h6>
-            <Result>{result[1]}</Result>
-          </Column>
+    <div class={`bg-slate-700 p-2 rounded-sm border border-gray-600`}>
+      <div class="flex justify-center mb-2">
+        <h6 class="text-xs">{dateParsed}</h6>
+      </div>
+      <div class="flex gap-4 items-center text-center justify-between mx-3 ">
+        <div class="flex flex-col justify-center items-center">
+          <img class="w-7" src={firstClubName[0].strTeamBadge} />
+          <h6 class="text-xs">{clubOne}</h6>
+          <p class="text-md font-semibold">{result[0]}</p>
         </div>
-      </Column>
-      <ButtonDelete onClick={handleDeleteMatch} />
-    </Container>
+        <p>:</p>
+        <div class="flex flex-col justify-center items-center ">
+          <img class="w-7" src={secondClubName[0].strTeamBadge} />
+          <h6 class="text-xs">{clubTwo}</h6>
+          <p class="text-md font-semibold">{result[1]}</p>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <ButtonDelete onClick={handleDeleteMatch} />
+      </div>
+    </div>
   );
 };
 

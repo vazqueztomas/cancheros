@@ -26,7 +26,7 @@ const Matches = ({ email, teams }) => {
   }, [userChangeMatches]);
 
   return (
-    <MatchContainer>
+    <div class="max-h-[70%] flex flex-col justify-center p-6 gap-2 overflow-scroll">
       {matches.length > 0 ? (
         matches.map((el, ind) => (
           <MatchCard
@@ -43,16 +43,8 @@ const Matches = ({ email, teams }) => {
       ) : (
         <h3>No cargaste ningun partido</h3>
       )}
-    </MatchContainer>
+    </div>
   );
 };
-
-const MatchContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 24px;
-  gap: 8px;
-`;
 
 export default Matches;

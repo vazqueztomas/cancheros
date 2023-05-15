@@ -5,8 +5,8 @@ import Label from "./Label";
 import { setNewMatch } from "../../services/services";
 import DateInput from "./DateInput";
 import CancelButton from "./CancelButton";
-import SubmitButton from "./SubmitButton";
 import GoalsInput from "./GoalsInput";
+import Button from "./Button";
 
 const initialValues = {
   email: localStorage.getItem("email"),
@@ -16,36 +16,30 @@ const initialValues = {
 };
 
 const FormNewMatch = ({ teams, setVisibleForm, visibleForm, user }) => {
-  const setMatch = async (matchData) => {
+  const setMatch = async matchData => {
     try {
       await setNewMatch(matchData);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(user);
   return (
     <Formik
       initialValues={initialValues}
-      validate={(values) => {
-        let errors = {};
+      validate={values => {
         console.log(values);
       }}
-      onSubmit={async (values) => {
+      onSubmit={async values => {
         await setMatch(values);
         setVisibleForm(!visibleForm);
-      }}
-    >
-      {(values) => (
-        <Form
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "16px",
-          }}
-        >
+      }}>
+      {values => (
+        <Form class="flex flex-col">
           <Label content="Contra quién jugó tu equipo ?" />
-          <Field as="select" name="playVersus">
+          <Field
+            as="select"
+            name="playVersus"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500">
             <option value="">Selecciona el equipo</option>
             {teams.map((el, ind) => (
               <option key={ind}>{el.strTeam}</option>
@@ -59,18 +53,16 @@ const FormNewMatch = ({ teams, setVisibleForm, visibleForm, user }) => {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-around",
-              }}
-            >
+              }}>
               <div
                 style={{
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   flexDirection: "column",
-                }}
-              >
+                }}>
                 <GoalsInput name="result[0]" />
-                <p>{user.club}</p>
+                <p class="text-xs">{user.club}</p>
               </div>
               <div
                 style={{
@@ -78,10 +70,9 @@ const FormNewMatch = ({ teams, setVisibleForm, visibleForm, user }) => {
                   justifyContent: "center",
                   alignItems: "center",
                   flexDirection: "column",
-                }}
-              >
+                }}>
                 <GoalsInput name="result[1]" />
-                <p>
+                <p class="text-xs">
                   {values.values.playVersus
                     ? values.values.playVersus
                     : "Selecciona contrario"}
@@ -90,18 +81,20 @@ const FormNewMatch = ({ teams, setVisibleForm, visibleForm, user }) => {
             </div>
           </Botonera>
 
-          <Botonera>
-            <SubmitButton
-              content="Cargar partido"
+          <div class="flex flex-col gap-2 mt-1">
+            <Button
+              label="Cargar partido"
+              func="primary"
               disabled={
-                values.values.playVersus == "" ||
-                values.values.matchDay == "" ||
-                values.values.result[0] ||
-                values.values.result[1]
+                values.values.playVersus == "" || values.values.matchDay == ""
               }
+              type="submit"
             />
-            <CancelButton onClick={() => setVisibleForm(!visibleForm)} />
-          </Botonera>
+            <Button
+              label="Cancelar"
+              onClick={() => setVisibleForm(!visibleForm)}
+            />
+          </div>
         </Form>
       )}
     </Formik>
