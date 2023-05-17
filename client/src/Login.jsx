@@ -54,8 +54,8 @@ const Login = () => {
           await handleLogin(valores);
         }}>
         {() => (
-          <Form class="flex flex-col gap-4 w-[320px] max-w-[320px]">
-            <div class="flex flex-col">
+          <Form class="flex flex-col gap-4 p-4 w-[80%] lg:max-w-[470px]">
+            <div class="flex flex-col ">
               <Label htmlFor="email" content="Email" />
               <Field
                 type="email"

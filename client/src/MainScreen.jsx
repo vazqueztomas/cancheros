@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { getTeams, getUser } from "../services/services";
 import LogoutButton from "./LogoutButton";
 import Matches from "./Matches";
@@ -33,9 +32,13 @@ const MainScreen = () => {
   }, []);
 
   return (
-    <section class="bg-gray-800 flex flex-col justify-center items-center text-white w-screen h-screen">
+    <section class="bg-gray-800 flex flex-col justify-center items-center text-white w-screen h-screen gap-8">
       <LogoutButton />
-      {!visibleForm ? <Matches email={email} teams={teams} /> : null}
+      {!visibleForm ? (
+        <div class="max-h-[60%] overflow-auto">
+          <Matches email={email} teams={teams} />
+        </div>
+      ) : null}
 
       {visibleForm ? (
         <FormNewMatch

@@ -25,7 +25,7 @@ const Matches = ({ email, teams }) => {
   }, [userChangeMatches]);
 
   return (
-    <div class="max-h-[70%] flex flex-col justify-center p-6 gap-2 overflow-scroll">
+    <div class="flex flex-col justify-center gap-2 overflow-auto">
       {matches.length > 0 ? (
         matches.map((el, ind) => (
           <MatchCard

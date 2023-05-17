@@ -26,7 +26,6 @@ const MatchCard = ({
   };
 
   const win = result[0] > result[1];
-  console.log(win);
   return (
     <div class={`bg-slate-700 p-2 rounded-sm border border-gray-600`}>
       <div class="flex justify-center mb-2">
