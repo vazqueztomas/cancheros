@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getTeams, getUser } from "../services/services";
-import LogoutButton from "./LogoutButton";
 import Matches from "./Matches";
 import FormNewMatch from "./components/FormNewMatch";
 import Button from "./components/Button";

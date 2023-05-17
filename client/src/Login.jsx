@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { userLogin } from "../services/services";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../context/AuthProvider";
-import { SecondButton } from "./components/styles";
 import Label from "./components/Label";
 import Button from "./components/Button";
 

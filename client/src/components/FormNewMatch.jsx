@@ -25,9 +25,6 @@ const FormNewMatch = ({ teams, setVisibleForm, visibleForm, user }) => {
   return (
     <Formik
       initialValues={initialValues}
-      validate={values => {
-        console.log(values);
-      }}
       onSubmit={async values => {
         await setMatch(values);
         setVisibleForm(!visibleForm);
