@@ -35,7 +35,7 @@ const MainScreen = () => {
     <section class="bg-gray-800 flex flex-col justify-center items-center text-white w-screen h-screen gap-8">
       <LogoutButton />
       {!visibleForm ? (
-        <div class="max-h-[60%] overflow-auto">
+        <div class="max-h-[60%] overflow-auto w-[60%]">
           <Matches email={email} teams={teams} />
         </div>
       ) : null}
