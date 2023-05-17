@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { deleteMatch } from "../services/services";
 import ButtonDelete from "./components/ButtonDelete";
 
@@ -56,42 +55,5 @@ const MatchCard = ({
     </div>
   );
 };
-
-const ImgClub = styled.img`
-  width: 28px;
-`;
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid white;
-  border-radius: 8px;
-  padding: 6px;
-  justify-content: space-around;
-  gap: 4px;
-  & h6,
-  p {
-    margin: 0;
-  }
-`;
-
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 4px 0;
-  align-items: center;
-  :nth-child(1) {
-    margin: 0 0 0 8px;
-  }
-  :nth-child(2) {
-    text-align: center;
-  }
-`;
-
-const Result = styled.p`
-  font-size: 22px;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-`;
 
 export default MatchCard;

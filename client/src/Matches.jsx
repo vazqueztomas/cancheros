@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import { getUser } from "../services/services";
 import MatchCard from "./MatchCard";
 
-const Matches = ({ email, teams }) => {
+const Matches = ({
+  email,
+  teams,
+  setDrawMatches,
+  setLostMatches,
+  setWonMatches,
+}) => {
   const [matches, setMatches] = useState([]);
   const [userMainClub, setUserMainClub] = useState();
   const [userChangeMatches, setUserChangeMatches] = useState([]);
@@ -11,6 +17,24 @@ const Matches = ({ email, teams }) => {
     try {
       const response = await getUser(data);
       setMatches(response.matches);
+      let wonCount = 0;
+      let lostCount = 0;
+      let drawCount = 0;
+
+      response.matches.forEach(match => {
+        const result = match.result;
+        if (result[0] > result[1]) {
+          wonCount++;
+        } else if (result[0] < result[1]) {
+          lostCount++;
+        } else {
+          drawCount++;
+        }
+      });
+
+      setWonMatches(wonCount);
+      setLostMatches(lostCount);
+      setDrawMatches(drawCount);
       setUserMainClub(response.club);
     } catch (error) {}
   };
