@@ -17,7 +17,7 @@ function App() {
           func="primary"
         />
         <Button
-          label="REGISTRARSE"
+          label="Registrarse acá"
           onClick={() => navigate("/signup")}
           func="secondary"
         />
