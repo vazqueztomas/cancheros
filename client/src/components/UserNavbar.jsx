@@ -18,18 +18,18 @@ const UserNavbar = () => {
       <Navbar.Collapse>
         <Navbar.Link
           class="text-white border flex p-2 rounded-md"
-          href="/navbars"
+          href="/mainscreen"
           active={true}>
           Mis partidos
         </Navbar.Link>
         <Navbar.Link
-          href="/navbars"
+          href="/about"
           class="text-white border flex p-2 rounded-md">
           {" "}
           About
         </Navbar.Link>
         <Navbar.Link
-          href="/navbars"
+          href="/contact"
           class="text-white border flex p-2 rounded-md">
           Contact
         </Navbar.Link>

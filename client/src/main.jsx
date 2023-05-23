@@ -18,6 +18,8 @@ import NotFound from "./pages/PageNotFound";
 import RequireAuth from "./RequireAuth";
 import SelectTeam from "./SelectTeam";
 import Signup from "./Signup";
+import Contact from "./Contact";
+import About from "./About";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +29,8 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/successfull" element={<LoginSuccesfull />} />
+      <Route path="/about" element = {<About/>}/>
+      <Route path="/contact" element = {<Contact/>}/>
       <Route element={<RequireAuth />}>
         <Route element={<PersistLogin />}>
           <Route path="/select-team" element={<SelectTeam />} />
