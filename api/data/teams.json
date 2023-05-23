@@ -111,12 +111,28 @@
       "strTeamBadge": "https://assets.b365api.com/images/team/b/3209.png"
     },
     {
+      "strTeam": "Instituto",
+      "srtTeamBadge": "https://seeklogo.com/images/I/instituto-atletico-central-cordoba-logo-A8D762B64B-seeklogo.com.png"
+    },
+    {
       "strTeam": "Belgrano",
       "strTeamBadge": "https://assets.b365api.com/images/team/b/3203.png"
     },
     {
       "strTeam": "Tigre",
       "strTeamBadge": "https://assets.b365api.com/images/team/b/7628.png"
+    },
+    {
+      "strTeam": "Platense",
+      "strTeamBadge" : "https://upload.wikimedia.org/wikipedia/commons/9/9e/Escudo_platense.png"
+    },
+    {
+      "strTeam": "Sarmiento",
+      "strTeamBadge": "https://seeklogo.com/images/C/club-atletico-sarmiento-de-junin-logo-4EA1DE1F64-seeklogo.com.png"
+    },
+    {
+      "strTeam": "Vélez",
+      "strTeamBadge": "https://seeklogo.com/images/C/ca-velez-sarfield-logo-151C9E4531-seeklogo.com.png"
     }
   ]
 }
