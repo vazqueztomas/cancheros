@@ -62,7 +62,6 @@ const Login = () => {
                 name="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500"
               />
-              <ErrorMessage name="email" component="div" />
             </div>
 
             <div class="flex flex-col">
@@ -72,7 +71,6 @@ const Login = () => {
                 name="password"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500"
               />
-              <ErrorMessage name="password" component="div" />
             </div>
             <Button type="submit" func="primary" label="INGRESAR" />
           </Form>
