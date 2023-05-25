@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { userLogin } from "../services/services";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../context/AuthProvider";
 import Label from "./components/Label";
 import Button from "./components/Button";
+import {ValidationError, ConnectionError} from '../config/errors.js'
 
 const initialValues = {
   email: "",
@@ -13,17 +14,18 @@ const initialValues = {
 const Login = () => {
   const navigate = useNavigate();
   const { setAuth, setPersist } = myContext();
+  const [error , setError] = useState(null);
 
   const handleLogin = async user => {
     try {
       const response = await userLogin(user);
-      let userInfo = response.data.userInfo;
+      const userInfo = response.data.userInfo;
       localStorage.setItem("email", userInfo.email);
       setAuth({ userInfo });
       setPersist(true);
       navigate("/select-team");
     } catch (error) {
-      console.error(error);
+      setError(error.response.data)
     }
   };
 
@@ -40,7 +42,7 @@ const Login = () => {
       <Formik
         initialValues={initialValues}
         validate={values => {
-          let errors = {};
+          const errors = {}
           if (!values.email) {
             errors.email = "Completa tu email";
           }
@@ -76,7 +78,7 @@ const Login = () => {
           </Form>
         )}
       </Formik>
-
+      {error ? <div class = 'text-red-600'>{error}</div> : null}
       <Button
         others={`mt-2`}
         onClick={() => navigate("/signup")}
