@@ -15,6 +15,8 @@ The API is hosted in <b><i>'Render'.</i></b>
 The client use a JSON with the names of the clubs, teams badges and the jerseys.
 The API and all functions we are created by 0, for better functionality system.
 
+We are using Github Actions to CI 
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
