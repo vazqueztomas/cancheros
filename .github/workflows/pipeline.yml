@@ -26,6 +26,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - run: cd client && npm install --no-audit --no-fund --no-optional
+      - run: cd client
       - name: Cypress run
         uses: cypress-io/github-action@v5
