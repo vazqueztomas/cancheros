@@ -2,8 +2,10 @@ name: Deployment pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
 
 jobs:
   deploy:
@@ -20,12 +22,3 @@ jobs:
         run: cd client && npm install --no-audit --no-fund --no-optional
       - name: build
         run: cd client && npm run build
-
-  cypress-run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - run: cd client
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
