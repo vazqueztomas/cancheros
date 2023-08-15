@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import { userLogin } from "../services/services";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../context/AuthProvider";
 import Label from "./components/Label";
 import Button from "./components/Button";
-import {ValidationError, ConnectionError} from '../config/errors.js'
-
+import EscudoAfa from './components/EscudoAfa'
 const initialValues = {
   email: "",
   password: "",
@@ -35,10 +34,6 @@ const Login = () => {
 
   return (
     <section class="bg-gray-800 text-white flex flex-col items-center justify-end w-screen h-screen pb-20">
-      <div style={{ textAlign: "center" }}>
-        <h1>Cancheros</h1>
-        <p>El historial de tus partidos</p>
-      </div>
       <Formik
         initialValues={initialValues}
         validate={values => {
@@ -54,25 +49,26 @@ const Login = () => {
           await handleLogin(valores);
         }}>
         {() => (
-          <Form class="flex flex-col gap-4 p-4 w-[80%] lg:max-w-[470px]">
-            <div class="flex flex-col ">
-              <Label htmlFor="email" content="Email" />
+          <Form class="flex flex-col items-center max-w-[350px] gap-2 p-4 w-full  border">
+            <EscudoAfa/>
+            <div class="flex flex-col w-full">
               <Field
+                placeholder = 'Email'
                 type="email"
                 name="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500"
               />
             </div>
 
-            <div class="flex flex-col">
-              <Label htmlFor="password" content="Password" />
+            <div class="flex flex-col w-full">
               <Field
+                placeholder = 'Contraseña'
                 type="password"
                 name="password"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-700 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500"
               />
             </div>
-            <Button type="submit" func="primary" label="INGRESAR" />
+            <Button type="submit" func="primary" label="INGRESAR" others = 'w-full'/>
           </Form>
         )}
       </Formik>

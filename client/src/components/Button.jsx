@@ -5,9 +5,9 @@ const Button = ({ label, onClick, func, others, disabled }) => {
     <button
       class={
         func === "primary"
-          ? "bg-violet-700 rounded-md p-2 font-medium"
+          ? `bg-violet-700 rounded-md p-2 font-medium ${others}`
           : `bg-transparent rounded-md p-2 font-medium border border-violet-700 ${others}`
-      }
+    }
       onClick={onClick}
       disabled={disabled}>
       {label}
